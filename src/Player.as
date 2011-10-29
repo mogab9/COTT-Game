@@ -5,7 +5,7 @@ package
 	
 	public class Player extends FlxSprite
 	{
-		[Embed(source = '../assets/actors/player.png')] private var playerPNG:Class;
+		[Embed(source = '../assets/textures/actors/player.png')] private var playerPNG:Class;
 		protected var isActive:Boolean;
 		protected var idPlayer:uint;
 		protected static var nbPlayers:uint;
