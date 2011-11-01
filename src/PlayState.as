@@ -1,5 +1,8 @@
 package  
 {
+	import flash.display.Graphics;
+	import flash.ui.Mouse;
+	
 	import org.flixel.*;
 	
 	public class PlayState extends FlxState
@@ -14,6 +17,10 @@ package
 		
 		protected var levelOne:BaseLevel;
 		
+		//Pause
+		private var title:FlxText;
+		private var playButton:FlxButton;
+		
 		public function PlayState() 
 		{
 		}
@@ -26,6 +33,8 @@ package
 		
 		override public function create():void
 		{
+
+			
 			levelOne = new Level_levelOne(true, onSpriteAddedCallback);
 			//FlxG.bgColor = 0xff144954;
 			
@@ -54,26 +63,59 @@ package
 			//FlxG.watch(player.velocity, "x", "vx");
 			//FlxG.watch(player.velocity, "y", "vy");
 			
+//-----------------------Creation of the Pause Menu-----------------------
+			//title
+			title = new FlxText(0, 16, FlxG.width, "Pause");
+			title.setFormat (null, 16, 0xFFFFFFFF, "center");
+			
+			//Back
+			//playButton = new FlxButton(FlxG.width/2-40, FlxG.height/2, "Play", pressBackGame);
+			playButton = new FlxButton(0, -2, "Play", pressBackGame);
+			
+//-------------------------------------------------------------------------
+			
 		}
 		
 		override public function update():void
 		{
-			super.update();
-			FlxG.collide(player, levelOne.mainLayer);
-			/*
-			FlxG.collide(player, floor);
-			FlxG.collide(player, platform);
+			//We check the Escape key to display (or not) the Pause menu
+			if (FlxG.keys.justPressed("ESCAPE")){
+				FlxG.paused = !FlxG.paused;
+				trace("pause menu");
+				if(!FlxG.paused){ 
+					this.remove(playButton);
+					this.remove(title);
+				}
+				else{
+					this.add(playButton);
+					this.add(title)
+					flash.ui.Mouse.show();
+				}
+			}
 			
-			FlxG.collide(player2, floor);
-			FlxG.collide(player2, platform);
-			
-			FlxG.collide(player3, floor);
-			FlxG.collide(player3, platform);
-			
-			FlxG.collide(player4, floor);
-			FlxG.collide(player4, platform);
-			*/
-			
+			if (!FlxG.paused) {
+				super.update();
+				FlxG.collide(player, levelOne.mainLayer);
+				/*
+				FlxG.collide(player, floor);
+				FlxG.collide(player, platform);
+				
+				FlxG.collide(player2, floor);
+				FlxG.collide(player2, platform);
+				
+				FlxG.collide(player3, floor);
+				FlxG.collide(player3, platform);
+				
+				FlxG.collide(player4, floor);
+				FlxG.collide(player4, platform);
+				*/
+			}
+		}
+		
+		private function pressBackGame():void{
+			FlxG.paused = false;
+			this.remove(playButton);
+			this.remove(title);
 		}
 		
 	}
