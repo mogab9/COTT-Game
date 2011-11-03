@@ -36,7 +36,7 @@ package
 			
 			//playButton = new FlxButton(0, -2, "Play");
 			playButton = new FlxButton(FlxG.width / 2 - 40, FlxG.height / 2, "Resume");
-			
+
 			playButton.onUp = function():void {
 				trace("pressBackGame triggered");
 				FlxG.paused = false;
@@ -54,10 +54,11 @@ package
 				trace("pause menu");
 				FlxG.paused = !FlxG.paused;
 				flash.ui.Mouse.show();
-				if(FlxG.paused)
-					return pauseGroup.update();
 			}
 			
+			if(FlxG.paused)
+					pauseGroup.update();
+					
 			if (!FlxG.paused) {
 				super.update();
 				FlxG.collide(player, levelOne.mainLayer);
@@ -68,7 +69,6 @@ package
 			super.draw();
 			if (FlxG.paused){
 				pauseGroup.draw();
-				pauseGroup.update();
 			}
 		}
 	}
