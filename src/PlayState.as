@@ -53,7 +53,10 @@ package
 			if (FlxG.keys.justReleased("ESCAPE") || FlxG.keys.justReleased("P")) {
 				trace("pause menu");
 				FlxG.paused = !FlxG.paused;
-				flash.ui.Mouse.show();
+				if(FlxG.paused){
+					flash.ui.Mouse.show();
+					return pauseGroup.update();
+				}				
 			}
 			
 			if(FlxG.paused)
@@ -61,6 +64,7 @@ package
 					
 			if (!FlxG.paused) {
 				super.update();
+				flash.ui.Mouse.hide();
 				FlxG.collide(player, levelOne.mainLayer);
 			}
 		}
