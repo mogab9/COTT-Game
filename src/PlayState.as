@@ -49,11 +49,20 @@ package
 
 		
 		override public function update():void {
+			//trace(FlxG.camera.screen.getScreenXY().x,FlxG.camera.screen.getScreenXY().y)
 			//We check the Escape key to display (or not) the Pause menu
 			if (FlxG.keys.justReleased("ESCAPE") || FlxG.keys.justReleased("P")) {
 				trace("pause menu");
 				FlxG.paused = !FlxG.paused;
-				if(FlxG.paused){
+				if (FlxG.paused) {
+					//playButton.x = FlxG.camera.x; // why STAYING ALL THE TIME TO 0 ??? WHYYY
+					//playButton.y = FlxG.camera.getContainerSprite().y;
+					//playButton.y = FlxG.camera.screen.getScreenXY().y / 2;
+					//FlxG.camera.getContainerSprite().x;
+					//playButton.x = player.x;
+					//playButton.y = player.y;
+					//player.x;
+
 					flash.ui.Mouse.show();
 					return pauseGroup.update();
 				}				
