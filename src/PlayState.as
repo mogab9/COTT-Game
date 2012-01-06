@@ -88,6 +88,16 @@ package
 			//We check the Escape key to display (or not) the Pause menu
 			//trace(levelOne.mainLayer.getScreenXY().x);
 			//trace(levelOne.mainLayer.getScreenXY().y);
+			
+			/**
+			 * test save
+			 */
+			if (FlxG.keys.justReleased('S')) {
+				trace("avant sauvegarde ..." + LevelsCompleted.levels);
+				LevelsCompleted.levels += 1;
+				trace("apres sauvegarde ..." + LevelsCompleted.levels);
+			}
+			 
 			if (FlxG.keys.justReleased("ESCAPE") || FlxG.keys.justReleased("P")) {
 				FlxG.paused = !FlxG.paused;
 				if (FlxG.paused) {
