@@ -2,6 +2,7 @@ package
 {
 	import flash.display.Graphics;
 	import flash.ui.Mouse;
+	import ui.DialogBox;
 	
 	import org.flixel.*;
 	
@@ -9,19 +10,26 @@ package
 	{
 		private var player:Player;
 		protected var levelOne:BaseLevel;
-		
-		//Pause elements
+		private var m_tDialogBox:DialogBox;
+
+		// Pause elements
 		private var title:FlxText;
 		private var playButton:FlxButton;
+		
+		// Render layers
+		static private var s_layerForeground:FlxGroup;
+		static private var s_layerOverlay:FlxGroup;
 		public var pauseGroup:FlxGroup;
 		
 		public function PlayState() {
 		}
 		
 		protected function onSpriteAddedCallback(sprite:FlxSprite, group:FlxGroup):void {
+			/*
 			if (sprite is Player) {
-				//player = sprite as Player;
+				player = sprite as Player;
 			}
+			*/
 		}
 		
 		override public function create():void
@@ -29,6 +37,8 @@ package
 			// --------Init-----------
 			levelOne = new Level_levelOne(true, onSpriteAddedCallback);
 			pauseGroup = new FlxGroup(); // pauseGroup 
+			s_layerForeground = new FlxGroup;
+			s_layerOverlay = new FlxGroup;
 			
 			//--------Pause Menu---------
 			title = new FlxText(0, 16, FlxG.width, "Pause");
@@ -43,11 +53,25 @@ package
 			}
 			pauseGroup.add(playButton);
 			pauseGroup.add(title);
-			//---------------------------
 			
+			//----------Dialog-----------
+				//Init
+			m_tDialogBox = new DialogBox;
+			
+				// Setting text
+			m_tDialogBox.setText("Damned, we are trapped like rabbits!");
+			
+				// Adding to layers
+			s_layerForeground.add(m_tDialogBox.m_aGraphics);
+			
+				// Activating
+			m_tDialogBox.setIsActive(true);
+			
+			//----- Adding layers -------
+			add(s_layerForeground);
+			//add(pauseGroup):
 		}
 
-		
 		override public function update():void {
 			//trace(FlxG.camera.screen.getScreenXY().x,FlxG.camera.screen.getScreenXY().y)
 			//We check the Escape key to display (or not) the Pause menu
@@ -67,20 +91,38 @@ package
 				}				
 			}
 			
-			if(FlxG.paused)
-					pauseGroup.update();
+			if(FlxG.paused && !m_tDialogBox.getIsActive())
+				pauseGroup.update();
 					
 			if (!FlxG.paused) {
 				super.update();
 				flash.ui.Mouse.hide();
 				FlxG.collide(player, levelOne.mainLayer);
 			}
+			
+			if (m_tDialogBox.getIsActive() == true) {
+				FlxG.paused = true;
+			}
+			processDialogsInput(); // Input listeners for Dialogs
 		}
 		
 		override public function draw():void {
 			super.draw();
-			if (FlxG.paused){
+			if (m_tDialogBox.getIsActive == true) {
+				s_layerForeground.draw();
+			}
+			if (FlxG.paused && !m_tDialogBox.getIsActive()){
 				pauseGroup.draw();
+			}
+		}
+		
+		// Input listeners for Dialogs
+		private function processDialogsInput():void {
+			if (m_tDialogBox.getIsActive()) {
+				if (FlxG.keys.justPressed("SPACE") || FlxG.keys.justPressed("ENTER")){
+					m_tDialogBox.setIsActive(false);
+					FlxG.paused = false;
+				}
 			}
 		}
 	}
