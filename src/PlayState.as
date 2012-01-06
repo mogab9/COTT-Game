@@ -8,7 +8,8 @@ package
 	
 	public class PlayState extends FlxState
 	{
-		private var player:Player;
+		private var players:Array; // Array with Player
+		private var exitDoor:Exit;
 		protected var levelOne:BaseLevel;
 		private var m_tDialogBox:DialogBox;
 
@@ -39,6 +40,8 @@ package
 		{
 			// --------Init-----------
 			levelOne = new Level_levelOne(true, onSpriteAddedCallback);
+			players = levelOne.masterLayer.members[1].members,
+			exitDoor = levelOne.masterLayer.members[2].members[0];
 			pauseGroup = new FlxGroup(); // pauseGroup 
 			s_layerForeground = new FlxGroup;
 			s_layerOverlay = new FlxGroup;
@@ -88,7 +91,7 @@ package
 			//We check the Escape key to display (or not) the Pause menu
 			//trace(levelOne.mainLayer.getScreenXY().x);
 			//trace(levelOne.mainLayer.getScreenXY().y);
-			
+						 
 			/**
 			 * test save
 			 */
@@ -121,7 +124,7 @@ package
 			if (!FlxG.paused) {
 				super.update();
 				flash.ui.Mouse.hide();
-				FlxG.collide(player, levelOne.mainLayer);
+				FlxG.collide(null, levelOne.mainLayer); // WTF collide NULL with mainLayer Oo & it works ... 
 			}
 			
 			if (m_tDialogBox.getIsActive() == true) {
