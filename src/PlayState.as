@@ -21,6 +21,9 @@ package
 		static private var s_layerOverlay:FlxGroup;
 		public var pauseGroup:FlxGroup;
 		
+		//HUD
+		private var currentRabbit:FlxText;
+		
 		public function PlayState() {
 		}
 		
@@ -70,6 +73,14 @@ package
 			//----- Adding layers -------
 			add(s_layerForeground);
 			//add(pauseGroup):
+			
+			currentRabbit = new FlxText(5, 5, 100);
+			currentRabbit.color = 0xffffffff;
+			currentRabbit.shadow = 0xff000000;
+			currentRabbit.scrollFactor.x = 0;
+			currentRabbit.scrollFactor.y = 0;
+			currentRabbit.text = "1";
+			add(currentRabbit);
 		}
 
 		override public function update():void {
@@ -104,6 +115,9 @@ package
 				FlxG.paused = true;
 			}
 			processDialogsInput(); // Input listeners for Dialogs
+			
+			currentRabbit.text = Player.currentId.toString();
+			//FlxG.log(Player.currentId); 
 		}
 		
 		override public function draw():void {

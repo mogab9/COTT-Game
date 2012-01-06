@@ -9,6 +9,7 @@ package
 		protected var isActive:Boolean;
 		protected var idPlayer:uint;
 		protected static var nbPlayers:uint;
+		public static var currentId:uint;
 		
 		public function Player(X:Number, Y:Number)
 		{
@@ -16,6 +17,7 @@ package
 			trace(nbPlayers);
 			
 			idPlayer = nbPlayers;
+			currentId = 1;
 			
 			// The first character created is the one who'll be active at the beginning of the game
 			if (idPlayer == 1) isActive = true; 
@@ -103,6 +105,7 @@ package
 			if (FlxG.keys.ONE) {
 				if(idPlayer == 1) {
 					if (!isActive)	 {
+						currentId = 1;
 						isActive = true;
 						FlxControl.player1.setCursorControl(false, false, true, true);
 						FlxControl.player1.setJumpButton("SPACE", FlxControlHandler.KEYMODE_PRESSED, 200, FlxObject.FLOOR, 250, 200);
@@ -118,6 +121,7 @@ package
 			if (FlxG.keys.TWO) {
 				if (idPlayer == 2) {
 					if (!isActive)	 {
+						currentId = 2;
 						isActive = true;
 						FlxControl.player2.setCursorControl(false, false, true, true);
 						FlxControl.player2.setJumpButton("SPACE", FlxControlHandler.KEYMODE_PRESSED, 200, FlxObject.FLOOR, 250, 200);
@@ -133,6 +137,7 @@ package
 			if (FlxG.keys.THREE) {
 				if (idPlayer == 3) {
 					if (!isActive)	 {
+						currentId = 3;
 						isActive = true;
 						FlxControl.player3.setCursorControl(false, false, true, true);
 						FlxControl.player3.setJumpButton("SPACE", FlxControlHandler.KEYMODE_PRESSED, 200, FlxObject.FLOOR, 250, 200);
@@ -148,6 +153,7 @@ package
 			if (FlxG.keys.FOUR) {
 				if (idPlayer == 4) {
 					if (!isActive)	 {
+						currentId = 4;
 						isActive = true;
 						FlxControl.player4.setCursorControl(false, false, true, true);
 						FlxControl.player4.setJumpButton("SPACE", FlxControlHandler.KEYMODE_PRESSED, 200, FlxObject.FLOOR, 250, 200);
