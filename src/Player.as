@@ -62,7 +62,7 @@ package
 					FlxControl.player1.setJumpButton("SPACE", FlxControlHandler.KEYMODE_PRESSED, 200, FlxObject.FLOOR, 250, 200);
 						
 					//	Stop the player running off the edge of the screen and falling into nothing
-					FlxControl.player1.setBounds(16, 0, 288, 240);
+					FlxControl.player1.setBounds(0 + 16, 0 + 18, 320 - (2 * 16), 320 - (2 * 18));
 					
 					//	Because we are using the MOVEMENT_ACCELERATES type the first value is the acceleration speed of the sprite
 					//	Think of it as the time it takes to reach maximum velocity. A value of 100 means it would take 1 second. A value of 400 means it would take 0.25 of a second.
@@ -76,19 +76,19 @@ package
 					facing = FlxObject.RIGHT;
 				break;
 				case 2:
-					FlxControl.player2.setBounds(16, 0, 288, 240);
+					FlxControl.player2.setBounds(0 + 16, 0 + 18, 320 - (2 * 16), 320 - (2 * 18));
 					FlxControl.player2.setMovementSpeed(400, 0, 100, 200, 400, 0);
 					FlxControl.player2.setGravity(0, 400);
 					facing = FlxObject.RIGHT;
 				break;
 				case 3:
-					FlxControl.player3.setBounds(16, 0, 288, 240);
+					FlxControl.player3.setBounds(0 + 16, 0 + 18, 320 - (2 * 16), 320 - (2 * 18));
 					FlxControl.player3.setMovementSpeed(400, 0, 100, 200, 400, 0);
 					FlxControl.player3.setGravity(0, 400);
 					facing = FlxObject.RIGHT;
 				break;
 				case 4:
-					FlxControl.player4.setBounds(16, 0, 288, 240);
+					FlxControl.player4.setBounds(0 + 16, 0 + 18, 320 - (2 * 16), 320 - (2 * 18));
 					FlxControl.player4.setMovementSpeed(400, 0, 100, 200, 400, 0);
 					FlxControl.player4.setGravity(0, 400);
 					facing = FlxObject.RIGHT;

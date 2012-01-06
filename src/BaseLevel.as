@@ -34,5 +34,6 @@ package
 		}
 
 		virtual public function addSpritesForLayerGroup2Layer1(onAddCallback:Function = null):void { }
+		virtual public function addSpritesForLayerGroup3Layer1(onAddCallback:Function = null):void { }
 	}
 }

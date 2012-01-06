@@ -98,6 +98,9 @@ package
 				trace("apres sauvegarde ..." + LevelsCompleted.levels);
 			}
 			 
+			/**
+			 * Pause
+			 */
 			if (FlxG.keys.justReleased("ESCAPE") || FlxG.keys.justReleased("P")) {
 				FlxG.paused = !FlxG.paused;
 				if (FlxG.paused) {

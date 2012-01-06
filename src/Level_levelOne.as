@@ -14,6 +14,7 @@ package
 
 		//Sprites
 		public var Group2Layer1Group:FlxGroup = new FlxGroup;
+		public var Group3Layer1Group:FlxGroup = new FlxGroup;
 
 
 		public function Level_levelOne(addToStage:Boolean = true, onAddSpritesCallback:Function = null)
@@ -29,11 +30,13 @@ package
 			//Add layers to the master group in correct order.
 			masterLayer.add(layerGroup1Map1);
 			masterLayer.add(Group2Layer1Group);
+			masterLayer.add(Group3Layer1Group);
 
 
 			if ( addToStage )
 			{
 				addSpritesForLayerGroup2Layer1(onAddSpritesCallback);
+				addSpritesForLayerGroup3Layer1(onAddSpritesCallback);
 				FlxG.state.add(masterLayer);
 			}
 
@@ -50,6 +53,11 @@ package
 		{
 			addSpriteToLayer(Player, Group2Layer1Group , 70.000, 44.000, 0.000, false, 1, 1, onAddCallback );//"Player1"
 			addSpriteToLayer(Player, Group2Layer1Group , 207.000, 107.000, 0.000, false, 1, 1, onAddCallback );//"Player2"
+		}
+
+		override public function addSpritesForLayerGroup3Layer1(onAddCallback:Function = null):void
+		{
+			addSpriteToLayer(Exit, Group3Layer1Group , 264.000, 177.000, 0.000, false, 1, 1, onAddCallback );//"Exit1"
 		}
 
 
