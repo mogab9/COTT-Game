@@ -11,6 +11,7 @@ package
 		private var player:Player;
 		protected var levelOne:BaseLevel;
 		private var m_tDialogBox:DialogBox;
+		private var m_xmlDialogs:XmlDialogs;
 
 		// Pause elements
 		private var title:FlxText;
@@ -61,8 +62,10 @@ package
 				//Init
 			m_tDialogBox = new DialogBox;
 			
-				// Setting text
-			m_tDialogBox.setText("Damned, we are trapped like rabbits!");
+				// Loading Xml Dialogs
+			m_xmlDialogs = new XmlDialogs;
+							// (TO CHANGE, CRAPY CRAP xD) Setting text
+			m_tDialogBox.setText(m_xmlDialogs.dialogs[1]);
 			
 				// Adding to layers
 			s_layerForeground.add(m_tDialogBox.m_aGraphics);
@@ -73,6 +76,8 @@ package
 			//----- Adding layers -------
 			add(s_layerForeground);
 			//add(pauseGroup):
+			
+			
 			
 			currentRabbit = new FlxText(5, 5, 100);
 			currentRabbit.color = 0xffffffff;
