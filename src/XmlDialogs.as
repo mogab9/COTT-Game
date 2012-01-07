@@ -5,13 +5,14 @@ package
 	import XML
 
 	public class XmlDialogs {
+		
 		public  var dialogs:Array;
+		public var next:int; // number of the next dialog
+		
 		[Embed(source='../datas/xml/dialogs.xml', mimeType="application/octet-stream")] public static const xmlFile:Class; 
-		
-		
-		
+
 		public function XmlDialogs() {
-			
+			next = 1;
 			processXML();
 		}
 		

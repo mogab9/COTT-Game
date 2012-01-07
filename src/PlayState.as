@@ -14,6 +14,7 @@ package
 		protected var endLevel:uint;
 		
 		private var m_tDialogBox:DialogBox;
+		private var m_tDialogLength:int; // number of dialogs for the given level
 		private var m_xmlDialogs:XmlDialogs;
 
 		// Pause elements
@@ -84,7 +85,8 @@ package
 				// Loading Xml Dialogs
 			m_xmlDialogs = new XmlDialogs;
 							// (TO CHANGE, CRAPY CRAP xD) Setting text
-			m_tDialogBox.setText(m_xmlDialogs.dialogs[1]);
+			m_tDialogBox.setText(m_xmlDialogs.dialogs[0]);
+			m_tDialogLength = m_xmlDialogs.dialogs.length;
 			
 				// Adding to layers
 			s_layerForeground.add(m_tDialogBox.m_aGraphics);
@@ -95,8 +97,6 @@ package
 			//----- Adding layers -------
 			add(s_layerForeground);
 			//add(pauseGroup):
-			
-			
 			
 			currentRabbit = new FlxText(5, 5, 100);
 			currentRabbit.color = 0xffffffff;
@@ -203,9 +203,15 @@ package
 		// Input listeners for Dialogs
 		private function processDialogsInput():void {
 			if (m_tDialogBox.getIsActive()) {
-				if (FlxG.keys.justPressed("SPACE") || FlxG.keys.justPressed("ENTER")){
-					m_tDialogBox.setIsActive(false);
-					FlxG.paused = false;
+				if (FlxG.keys.justPressed("SPACE") || FlxG.keys.justPressed("ENTER")) {
+					if (m_tDialogLength - 1 > 0) {
+						m_tDialogLength--; // cpt
+						m_tDialogBox.setText(m_xmlDialogs.dialogs[m_xmlDialogs.next]); // displaying the next text
+						m_xmlDialogs.next += 1; // updating next
+					}else {
+						m_tDialogBox.setIsActive(false);
+						FlxG.paused = false;
+					}
 				}
 			}
 		}
