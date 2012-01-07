@@ -2,15 +2,16 @@
 <project>
   <version>2.1.4</version>
   <bgColor>0x777777</bgColor>
-  <viewPos x="-177.20149669612292" y="-120.34531249999999"/>
+  <viewPos x="92" y="232"/>
   <firstLayersTop>false</firstLayersTop>
-  <spriteEntries currentId="6">
-    <group name="Rabbits" idx="4" open="true">
-      <sprite name="Player1" idx="1" className="Player" image="../assets/textures/actors/player.png" width="16" height="18" preview="0" anchorX="0" anchorY="0" boundsX="0" boundsY="0" boundsWidth="16" boundsHeight="18" constructor="" creation="" exports="true" canScale="true" canRotate="true" surfaceObject="false" tileIndex="-1"/>
-      <sprite name="Player2" idx="2" className="Player" image="../assets/textures/actors/player.png" width="16" height="18" preview="0" anchorX="0" anchorY="0" boundsX="0" boundsY="0" boundsWidth="16" boundsHeight="18" constructor="" creation="" exports="true" canScale="true" canRotate="true" surfaceObject="false" tileIndex="-1"/>
+  <spriteEntries currentId="7">
+    <group name="Rabbits" idx="1" open="true">
+      <sprite name="Player1" idx="2" className="Player" image="../assets/textures/actors/player.png" width="16" height="18" preview="0" anchorX="0" anchorY="0" boundsX="0" boundsY="0" boundsWidth="16" boundsHeight="18" constructor="" creation="" exports="true" canScale="true" canRotate="true" surfaceObject="false" tileIndex="-1"/>
+      <sprite name="Player2" idx="3" className="Player" image="../assets/textures/actors/player.png" width="16" height="18" preview="0" anchorX="0" anchorY="0" boundsX="0" boundsY="0" boundsWidth="16" boundsHeight="18" constructor="" creation="" exports="true" canScale="true" canRotate="true" surfaceObject="false" tileIndex="-1"/>
+      <sprite name="Player3" idx="6" className="FireRabbit" image="../assets/textures/actors/firerabbit.png" width="16" height="18" preview="0" anchorX="0" anchorY="0" boundsX="0" boundsY="0" boundsWidth="16" boundsHeight="18" constructor="" creation="" exports="true" canScale="true" canRotate="true" surfaceObject="false" tileIndex="0" selected="true"/>
     </group>
-    <group name="Exit" idx="3" open="true"/>
-    <sprite name="Exit1" idx="5" className="Exit" image="../assets/textures/elements/exit.png" width="16" height="16" preview="0" anchorX="0" anchorY="0" boundsX="0" boundsY="0" boundsWidth="16" boundsHeight="16" constructor="" creation="" exports="true" canScale="true" canRotate="true" surfaceObject="false" tileIndex="-1" selected="true"/>
+    <group name="Exit" idx="4" open="true"/>
+    <sprite name="Exit1" idx="5" className="Exit" image="../assets/textures/elements/exit.png" width="30" height="30" preview="0" anchorX="0" anchorY="0" boundsX="0" boundsY="0" boundsWidth="16" boundsHeight="16" constructor="" creation="" exports="true" canScale="true" canRotate="true" surfaceObject="false" tileIndex="-1"/>
   </spriteEntries>
   <layers>
     <group name="Group1" xScroll="1" yScroll="1" visible="true" open="true" locked="false" exports="true">
@@ -42,13 +43,14 @@
     </group>
     <group name="Group2" xScroll="1" yScroll="1" visible="true" open="true" locked="false" exports="true">
       <spritelayer name="Layer1" xScroll="1" yScroll="1" visible="true" locked="false" exports="true" aligned="false" sort="false">
-        <sprite guid="7A651060-4A0C-1A7B-8CD2-88B59911713C" x="70" y="44" Z="0" angle="0" scaleX="1" scaleY="1" flipped="false" idx="1"/>
-        <sprite guid="4E4A3421-A446-1CE9-091F-8382829AA3E7" x="207" y="107" Z="0" angle="0" scaleX="1" scaleY="1" flipped="false" idx="2"/>
+        <sprite guid="7A651060-4A0C-1A7B-8CD2-88B59911713C" x="70" y="44" Z="0" angle="0" scaleX="1" scaleY="1" flipped="false" idx="2"/>
+        <sprite guid="4E4A3421-A446-1CE9-091F-8382829AA3E7" x="207" y="107" Z="0" angle="0" scaleX="1" scaleY="1" flipped="false" idx="3"/>
       </spritelayer>
     </group>
     <group name="Group3" xScroll="1" yScroll="1" visible="true" open="true" locked="false" exports="true">
       <spritelayer name="Layer1" xScroll="1" yScroll="1" visible="true" locked="false" exports="true" aligned="false" sort="false" selected="true">
         <sprite guid="FEF52CE2-E060-0529-DC88-74CE005CDB3B" x="264" y="177" Z="0" angle="0" scaleX="1" scaleY="1" flipped="false" idx="5"/>
+        <sprite guid="FA2C5469-CCDB-E442-D196-75EA0BBEEC89" x="69" y="123" Z="0" angle="0" scaleX="1" scaleY="1" flipped="false" idx="6" frame="0"/>
       </spritelayer>
     </group>
   </layers>
@@ -212,12 +214,15 @@
     <setting name="TileMapClass">FlxTilemap</setting>
     <setting name="FlixelPackage">org.flixel</setting>
     <setting name="GamePackage">com</setting>
-    <setting name="MainLayer">Group1Map1</setting>
-    <setting name="LevelName">levelOne</setting>
+    <setting name="IntermediateClass"/>
+    <setting name="BaseClassExtends"/>
     <setting name="BaseClass">BaseLevel</setting>
     <setting name="FlixelVersion">2.5</setting>
     <setting name="CSVDir">D:\flashDevWorkspace\Building a retro Flash game in Flixel Part 1\Nutmeg Part 1 - The Player\maps</setting>
     <setting name="AS3Dir">D:\flashDevWorkspace\Building a retro Flash game in Flixel Part 1\Nutmeg Part 1 - The Player\src</setting>
+    <setting name="FileExt">csv</setting>
+    <setting name="MainLayer">Group1Map1</setting>
+    <setting name="LevelName">levelOne</setting>
   </exporter>
   <guides>
     <snap>false</snap>

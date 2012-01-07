@@ -6,14 +6,9 @@ package
 	public class Exit extends FlxSprite
 	{
 		[Embed(source = '../assets/textures/elements/end.png')] private var exitPNG:Class;
-		public static var X:Number;
-		public static var Y:Number;
 		
 		public function Exit(X:Number, Y:Number):void
-		{
-			X = X;
-			Y = Y;
-			
+		{			
 			//	As this extends FlxSprite we need to call super() to ensure all of the parent variables we need are created
 			super(X, Y);
 			
@@ -28,8 +23,7 @@ package
 			
 			//	Because we've shaved a few pixels off, we need to offset the sprite to compensate
 			offset.x = 2;
-			offset.y = 2;
-			
+			offset.y = 2;			
 		}
 		
 		override public function update():void
