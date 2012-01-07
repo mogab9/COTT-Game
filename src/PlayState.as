@@ -83,8 +83,7 @@ package
 			m_tDialogBox = new DialogBox;
 			
 				// Loading Xml Dialogs
-			m_xmlDialogs = new XmlDialogs;
-							// (TO CHANGE, CRAPY CRAP xD) Setting text
+			m_xmlDialogs = new XmlDialogs(1); // level number
 			m_tDialogBox.setText(m_xmlDialogs.dialogs[0]);
 			m_tDialogLength = m_xmlDialogs.dialogs.length;
 			

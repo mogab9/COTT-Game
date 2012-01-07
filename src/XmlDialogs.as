@@ -8,10 +8,12 @@ package
 		
 		public  var dialogs:Array;
 		public var next:int; // number of the next dialog
+		private var level_number:int;
 		
 		[Embed(source='../datas/xml/dialogs.xml', mimeType="application/octet-stream")] public static const xmlFile:Class; 
 
-		public function XmlDialogs() {
+		public function XmlDialogs(levelNumber:int) {
+			level_number = levelNumber;
 			next = 1;
 			processXML();
 		}
@@ -24,7 +26,7 @@ package
 			
 			dialogs = new Array;
 			
-			for each (o in xml.level[0].dialog) {
+			for each (o in xml.level[level_number-1].dialog) {
 				//addChild( new Block( o.@X, o.@Y, o.@WIDTH, o.@HEIGHT ) );
 				dialogs.push(o);
 			}
