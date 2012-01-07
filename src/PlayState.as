@@ -139,7 +139,13 @@ package
 				// goToNextLevel();
 				
 			}
-			 
+			
+			/*
+			if(FlxG.keys.justPressed("W"))
+			{
+				spawnBullet(player[1].getBulletSpawnPosition(player[1].facing));
+			}
+			 */
 			/**
 			 * Pause
 			 */
@@ -198,6 +204,15 @@ package
 				}
 			}
 		}
+		
+		/*
+		//Create Fireball
+		private function spawnBullet(p: FlxPoint):void
+		{
+			var fireball: Fireball = new Fireball(p.x, p.y, player[1].facing );
+			add(fireball);
+		}
+		*/
 	}
 
 }
