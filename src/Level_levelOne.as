@@ -53,7 +53,6 @@ package
 		{
 			addSpriteToLayer(Player, Group2Layer1Group , 70.000, 44.000, 0.000, false, 1, 1, onAddCallback );//"Player1"
 			addSpriteToLayer(FireRabbit, Group2Layer1Group , 207.000, 107.000, 0.000, false, 1, 1, onAddCallback );//"Player2"
-			//addSpriteToLayer(Player, Group2Layer1Group , 201.000, 107.000, 0.000, false, 1, 1, onAddCallback );//"Player2"
 		}
 
 		override public function addSpritesForLayerGroup3Layer1(onAddCallback:Function = null):void

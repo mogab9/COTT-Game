@@ -16,6 +16,7 @@ package
 			//load the image for fireball
 			loadGraphic(fireballPNG, true, true, 12, 10);
 			
+			
 			//make the animation for fireball
 			addAnimation("shoo", [0, 1], 6, true);
 			play("shoo");

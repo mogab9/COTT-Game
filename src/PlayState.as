@@ -144,12 +144,14 @@ package
 				
 			}
 			
-			/*
+			//handler for fireball
 			if(FlxG.keys.justPressed("W"))
 			{
-				spawnBullet(player[1].getBulletSpawnPosition(player[1].facing));
+				//get the position in FireRabbit and then create the fireball and shoot
+				spawnBullet(levelOne.masterLayer.members[1].members[1].getBulletSpawnPosition(levelOne.masterLayer.members[1].members[1].facing));
 			}
-			 */
+			
+			
 			/**
 			 * Pause
 			 */
@@ -215,14 +217,15 @@ package
 			}
 		}
 		
-		/*
 		//Create Fireball
 		private function spawnBullet(p: FlxPoint):void
 		{
-			var fireball: Fireball = new Fireball(p.x, p.y, player[1].facing );
+			//p is the position for the firerabbit
+			var fireball: Fireball = new Fireball(p.x, p.y, levelOne.masterLayer.members[1].members[1].facing );
+			//not collide with map, failed
+			FlxG.overlap(fireball);
 			add(fireball);
 		}
-		*/
 	}
 
 }

@@ -84,10 +84,11 @@ package
 		
 		public function getBulletSpawnPosition(direct:uint):FlxPoint
 		{
+			var p: FlxPoint;
 			if(direct==RIGHT)
-			var p: FlxPoint = new FlxPoint(x + 2, y + 6);
+				p= new FlxPoint(x + 2, y + 6);
 			else
-			var p: FlxPoint = new FlxPoint(x - 2, y + 6);
+				p= new FlxPoint(x - 2, y + 6);
 			return p;
 		}
 		
