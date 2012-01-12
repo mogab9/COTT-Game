@@ -12,7 +12,7 @@ package
 			//	As this extends FlxSprite we need to call super() to ensure all of the parent variables we need are created
 			super(X, Y);
 			
-			//	Load the player.png into this sprite.
+			//	Load the end.png into this sprite.
 			//	The 2nd parameter tells Flixel it's a sprite sheet and it should chop it up into 16x18 sized frames.
 			loadGraphic(exitPNG, true, true, 16, 18, true);
 			
