@@ -8,6 +8,8 @@ package
 	
 	public class PlayState extends FlxState
 	{
+		[Embed(source = "../assets/textures/ui/heart.png")] private var ImgHeart:Class;
+		
 		private var players:Array; // Array with Player
 		private var exitDoor:Exit;
 		protected var levelOne:BaseLevel;
@@ -16,7 +18,7 @@ package
 		private var m_tDialogBox:DialogBox;
 		private var m_tDialogLength:int; // number of dialogs for the given level
 		private var m_xmlDialogs:XmlDialogs;
-
+		
 		// Pause elements
 		private var title:FlxText;
 		private var playButton:FlxButton;
