@@ -72,14 +72,7 @@ package
 				}
 			}
 		}
-		private function spawnBullet(p: FlxPoint):void
-		{
-			//p is the position for the firerabbit
-			var fireball: Fireball = new Fireball(p.x, p.y, facing);
-			//not collide with map, failed
-			FlxG.overlap(fireball);
-			Player.playstate.add(fireball);
-		}
+	
 		//Create Fireball
 		private function spawnBullet(p: FlxPoint):void
 		{

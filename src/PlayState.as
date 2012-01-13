@@ -32,12 +32,7 @@ package
 		//HUD
 		private var currentRabbit:FlxText;
 		
-		/*
-		//add a group to include all the fireball for handling
-		private var _fireball:FlxGroup;
-		//flag to show if fireball exist or not, defaut set to false
-		private var fireflag:Boolean;
-		*/
+		
 		
 		public function PlayState() {
 		}
@@ -242,6 +237,6 @@ package
 				}
 			}
 		}
-		*/
+		
 	}
 }
