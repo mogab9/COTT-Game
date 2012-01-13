@@ -170,6 +170,7 @@ package
 					//if there is no fireball left, set flag to false
 					if (_fireball.members[0]==null)
 					fireflag = false;
+					
 				}
 			}
 			
