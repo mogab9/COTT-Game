@@ -157,6 +157,7 @@ package
 			{
 				//get the position in FireRabbit and then create the fireball and shoot
 				spawnBullet(levelOne.masterLayer.members[1].members[1].getBulletSpawnPosition(levelOne.masterLayer.members[1].members[1].facing));
+			
 			}
 			//make the fireball disappear when it bump into walls or overpass the boundry
 			if (fireflag != false) {	
