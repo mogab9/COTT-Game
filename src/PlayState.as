@@ -30,6 +30,11 @@ package
 		//HUD
 		private var currentRabbit:FlxText;
 		
+		//add a group to include all the fireball for handling
+		private var _fireball:FlxGroup;
+		//flag to show if fireball exist or not, defaut set to false
+		private var fireflag:Boolean;
+		
 		public function PlayState() {
 		}
 		
@@ -51,6 +56,9 @@ package
 			endLevelGroup = new FlxGroup(); // endLevelGroup 
 			s_layerForeground = new FlxGroup;
 			s_layerOverlay = new FlxGroup;
+			_fireball = new FlxGroup();// fireball group		
+			add(_fireball);
+			fireflag = false;//init to false
 			
 			//--------Pause Menu---------
 			title = new FlxText(0, 16, FlxG.width, "Pause");
@@ -150,6 +158,22 @@ package
 				//get the position in FireRabbit and then create the fireball and shoot
 				spawnBullet(levelOne.masterLayer.members[1].members[1].getBulletSpawnPosition(levelOne.masterLayer.members[1].members[1].facing));
 			}
+			//make the fireball disappear when it bump into walls or overpass the boundry
+			if (fireflag != false) {	
+				if (_fireball.members[0].velocity.x==0 ||_fireball.members[0].x<0 ||_fireball.members[0].x>FlxG.width)
+				{
+					//kill the first fireball
+					_fireball.members[0].kill;
+					//shift all the fireball to detect the followed fireball
+					_fireball.members.shift();
+					
+					//if there is no fireball left, set flag to false
+					if (_fireball.members[0]==null)
+					fireflag = false;
+				}
+			}
+			
+			
 			
 			
 			/**
@@ -185,6 +209,9 @@ package
 			
 			currentRabbit.text = Player.currentId.toString();
 			//FlxG.log(Player.currentId); 
+			
+			
+			
 		}
 		
 		override public function draw():void {
@@ -222,10 +249,11 @@ package
 		{
 			//p is the position for the firerabbit
 			var fireball: Fireball = new Fireball(p.x, p.y, levelOne.masterLayer.members[1].members[1].facing );
-			//not collide with map, failed
-			FlxG.overlap(fireball);
-			add(fireball);
-		}
+			//set the flag to true to show there is the fireball
+			fireflag = true;
+			//add to fireball group to draw
+			_fireball.add(fireball);
+		}					
 	}
 
 }
