@@ -10,6 +10,7 @@ package
 		protected var idPlayer:uint;
 		protected static var nbPlayers:uint;
 		public static var currentId:uint;
+		public static var playstate:PlayState;
 		
 		public function Player(X:Number, Y:Number)
 		{
@@ -202,7 +203,6 @@ package
 					FlxControl.player4.setJumpButton("SPACE", FlxControlHandler.KEYMODE_PRESSED, 0, FlxObject.FLOOR, 250, 200);
 				break;
 			}
-		}
-		
+		}		
 	}
 }

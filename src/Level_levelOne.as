@@ -21,7 +21,7 @@ package
 		{
 			// Generate maps.
 			layerGroup1Map1 = new FlxTilemap;
-			layerGroup1Map1.loadMap( new CSV_Group1Map1, Img_Group1Map1, 16,16, FlxTilemap.OFF, 0, 1, 1 );
+			layerGroup1Map1.loadMap( new CSV_Group1Map1, Img_Group1Map1, 16, 16, FlxTilemap.OFF, 0, 1, 1 );
 			layerGroup1Map1.x = 0.000000;
 			layerGroup1Map1.y = 0.000000;
 			layerGroup1Map1.scrollFactor.x = 1.000000;

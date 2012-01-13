@@ -8,6 +8,8 @@ package
 	
 	public class PlayState extends FlxState
 	{
+		[Embed(source = "../assets/textures/ui/heart.png")] private var ImgHeart:Class;
+		
 		private var players:Array; // Array with Player
 		private var exitDoor:Exit;
 		protected var levelOne:BaseLevel;
@@ -16,7 +18,7 @@ package
 		private var m_tDialogBox:DialogBox;
 		private var m_tDialogLength:int; // number of dialogs for the given level
 		private var m_xmlDialogs:XmlDialogs;
-
+		
 		// Pause elements
 		private var title:FlxText;
 		private var playButton:FlxButton;
@@ -54,8 +56,9 @@ package
 			levelOne = new Level_levelOne(true, onSpriteAddedCallback);
 			players = levelOne.masterLayer.members[1].members,
 			exitDoor = levelOne.masterLayer.members[2].members[0];
-			pauseGroup = new FlxGroup(); // pauseGroup 
-			endLevelGroup = new FlxGroup(); // endLevelGroup 
+			Player.playstate = this;
+			pauseGroup = new FlxGroup; // pauseGroup 
+			endLevelGroup = new FlxGroup; // endLevelGroup 
 			s_layerForeground = new FlxGroup;
 			s_layerOverlay = new FlxGroup;
 			add(levelOne.masterLayer.members[1].members[1]._fireball);
@@ -69,7 +72,6 @@ package
 			title = new FlxText(0, 16, FlxG.width, "Pause");
 			title.setFormat (null, 16, 0xFFFFFFFF, "center");
 			
-			//playButton = new FlxButton(0, -2, "Play");
 			playButton = new FlxButton(FlxG.width / 2 - 40, FlxG.height / 2, "Resume");
 
 			playButton.onUp = function():void {
@@ -120,14 +122,17 @@ package
 		}
 
 		override public function update():void {
-			//trace(FlxG.camera.screen.getScreenXY().x,FlxG.camera.screen.getScreenXY().y)
-			//We check the Escape key to display (or not) the Pause menu
-			//trace(levelOne.mainLayer.getScreenXY().x);
-			//trace(levelOne.mainLayer.getScreenXY().y);
+						//trace(FlxG.camera.screen.getScreenXY().x,FlxG.camera.screen.getScreenXY().y)
+						//We check the Escape key to display (or not) the Pause menu
+						//trace(levelOne.mainLayer.getScreenXY().x);
+						//trace(levelOne.mainLayer.getScreenXY().y);
 				
 			/**
-			 * check the end of the level
+			 * --------------------------------------------------------
+			 * 			STEP 1 = check the end of the level
+			 * --------------------------------------------------------
 			 */
+			
 			endLevel = 1;
 			for (var i:uint = 0 ; i < players.length ; i++)
 			{
@@ -145,6 +150,9 @@ package
 				
 				FlxG.paused = true;
 				
+				playButton = endLevelGroup.members[0];
+				title = endLevelGroup.members[1];
+				
 				playButton.x = -levelOne.mainLayer.getScreenXY().x + (FlxG.width/2) - (playButton.width/2);
 				playButton.y = -levelOne.mainLayer.getScreenXY().y + (FlxG.height / 2) - (playButton.height / 2);
 				
@@ -155,60 +163,36 @@ package
 				return endLevelGroup.update();
 				// goToNextLevel();
 				
-			}
+			}			
 			/*
-			//handler for fireball
-			if(FlxG.keys.justPressed("W"))
-			{
-				//get the position in FireRabbit and then create the fireball and shoot
-				spawnBullet(levelOne.masterLayer.members[1].members[1].getBulletSpawnPosition(levelOne.masterLayer.members[1].members[1].facing));
-			
-			}
-			//make the fireball disappear when it bump into walls or overpass the boundry
-			if (fireflag != false) {	
-				if (_fireball.members[0].velocity.x==0 ||_fireball.members[0].x<0 ||_fireball.members[0].x>FlxG.width)
-				{
-					//kill the first fireball
-					_fireball.members[0].kill;
-					//shift all the fireball to detect the followed fireball
-					_fireball.members.shift();
-					
-					//if there is no fireball left, set flag to false
-					if (_fireball.members[0]==null)
-					fireflag = false;
-				}
-			}
-			*/
-			
-			
-			
-			
-			/**
-			 * Pause
+			/*
+			 * --------------------------------------------------------
+			 * 			STEP 2 = the pause menu
+			 * --------------------------------------------------------
 			 */
 			if (FlxG.keys.justReleased("ESCAPE") || FlxG.keys.justReleased("P")) {
-				FlxG.paused = !FlxG.paused;
-				if (FlxG.paused) {
-					playButton.x = -levelOne.mainLayer.getScreenXY().x + (FlxG.width/2) - (playButton.width/2);
-					playButton.y = -levelOne.mainLayer.getScreenXY().y + (FlxG.height / 2) - (playButton.height / 2);
-					
-					title.x = -levelOne.mainLayer.getScreenXY().x;
-					title.y = -levelOne.mainLayer.getScreenXY().y + (playButton.height / 2);
+				FlxG.paused = !FlxG.paused;				
+			}
+			
+			if (FlxG.paused && !m_tDialogBox.getIsActive()) {
+				playButton = pauseGroup.members[0];
+				title = pauseGroup.members[1];
+				
+				playButton.x = -levelOne.mainLayer.getScreenXY().x + (FlxG.width/2) - (playButton.width/2);
+				playButton.y = -levelOne.mainLayer.getScreenXY().y + (FlxG.height / 2) - (playButton.height / 2);
+				
+				title.x = -levelOne.mainLayer.getScreenXY().x;
+				title.y = -levelOne.mainLayer.getScreenXY().y + (playButton.height / 2);
 
-					flash.ui.Mouse.show();
-					return pauseGroup.update();
-				}				
-			}
-			
-			if(FlxG.paused && !m_tDialogBox.getIsActive())
+				flash.ui.Mouse.show();
 				pauseGroup.update();
-					
-			if (!FlxG.paused) {
-				super.update();
-				flash.ui.Mouse.hide();
-				FlxG.collide(null, levelOne.mainLayer); // WTF collide NULL with mainLayer Oo & it works ... 
 			}
 			
+			/*
+			 * --------------------------------------------------------
+			 *  			STEP 3 = Handle the Dialogs
+			 * --------------------------------------------------------
+			 */
 			if (m_tDialogBox.getIsActive() == true) {
 				FlxG.paused = true;
 			}
@@ -217,8 +201,16 @@ package
 			currentRabbit.text = Player.currentId.toString();
 			//FlxG.log(Player.currentId); 
 			
-			
-			
+			/*
+			 * --------------------------------------------------------
+			 *  			STEP 4 = the "normal" update
+ 			 * --------------------------------------------------------
+			 */
+			if (!FlxG.paused) {
+				super.update();
+				flash.ui.Mouse.hide();
+				FlxG.collide(null, levelOne.mainLayer); // WTF collide NULL with mainLayer Oo & it works ... it's magiccccc
+			}
 		}
 		
 		override public function draw():void {
@@ -250,18 +242,6 @@ package
 				}
 			}
 		}
-		/*
-		//Create Fireball
-		private function spawnBullet(p: FlxPoint):void
-		{
-			//p is the position for the firerabbit
-			var fireball: Fireball = new Fireball(p.x, p.y, levelOne.masterLayer.members[1].members[1].facing );
-			//set the flag to true to show there is the fireball
-			fireflag = true;
-			//add to fireball group to draw
-			_fireball.add(fireball);
-		}
 		*/
 	}
-
 }

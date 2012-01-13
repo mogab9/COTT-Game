@@ -1,9 +1,5 @@
 package  
 {
-	/**
-	 * ...
-	 * @author KevinLuo201
-	 */
 	import org.flixel.*;
 	
 	public class Fireball extends FlxSprite
@@ -12,10 +8,9 @@ package
 		public function Fireball(X:Number, Y:Number,direct:uint):void 
 		{
 			super(X, Y);
-			//makeGraphic(16, 4, 0xFF597137);
+			
 			//load the image for fireball
 			loadGraphic(fireballPNG, true, true, 12, 10);
-			
 			
 			//make the animation for fireball
 			addAnimation("shoo", [0, 1], 6, true);
@@ -33,7 +28,5 @@ package
 				velocity.x = -200;
 			}
 		}
-		
 	}
-
 }
