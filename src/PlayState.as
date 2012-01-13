@@ -30,10 +30,12 @@ package
 		//HUD
 		private var currentRabbit:FlxText;
 		
+		/*
 		//add a group to include all the fireball for handling
 		private var _fireball:FlxGroup;
 		//flag to show if fireball exist or not, defaut set to false
 		private var fireflag:Boolean;
+		*/
 		
 		public function PlayState() {
 		}
@@ -56,9 +58,12 @@ package
 			endLevelGroup = new FlxGroup(); // endLevelGroup 
 			s_layerForeground = new FlxGroup;
 			s_layerOverlay = new FlxGroup;
+			add(levelOne.masterLayer.members[1].members[1]._fireball);
+			/*
 			_fireball = new FlxGroup();// fireball group		
 			add(_fireball);
 			fireflag = false;//init to false
+			*/
 			
 			//--------Pause Menu---------
 			title = new FlxText(0, 16, FlxG.width, "Pause");
@@ -151,7 +156,7 @@ package
 				// goToNextLevel();
 				
 			}
-			
+			/*
 			//handler for fireball
 			if(FlxG.keys.justPressed("W"))
 			{
@@ -173,6 +178,7 @@ package
 					fireflag = false;
 				}
 			}
+			*/
 			
 			
 			
@@ -244,7 +250,7 @@ package
 				}
 			}
 		}
-		
+		/*
 		//Create Fireball
 		private function spawnBullet(p: FlxPoint):void
 		{
@@ -254,7 +260,8 @@ package
 			fireflag = true;
 			//add to fireball group to draw
 			_fireball.add(fireball);
-		}					
+		}
+		*/
 	}
 
 }
