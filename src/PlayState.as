@@ -2,6 +2,7 @@ package
 {
 	import flash.display.Graphics;
 	import flash.ui.Mouse;
+	import ui.DialogBoxAvatar;
 	import ui.DialogBox;
 	
 	import org.flixel.*;
@@ -15,9 +16,11 @@ package
 		protected var levelOne:BaseLevel;
 		protected var endLevel:uint;
 		
+		// Dialogs
 		private var m_tDialogBox:DialogBox;
 		private var m_tDialogLength:int; // number of dialogs for the given level
 		private var m_xmlDialogs:XmlDialogs;
+		private var m_DialogBoxAvatars:DialogBoxAvatar;
 		
 		// Pause elements
 		private var title:FlxText;
@@ -83,11 +86,16 @@ package
 			//----------Dialog-----------
 				//Init
 			m_tDialogBox = new DialogBox;
+			m_DialogBoxAvatars = new DialogBoxAvatar;
 			
 				// Loading Xml Dialogs
 			m_xmlDialogs = new XmlDialogs(1); // level number
 			m_tDialogBox.setText(m_xmlDialogs.dialogs[0]);
 			m_tDialogLength = m_xmlDialogs.dialogs.length;
+			trace(m_xmlDialogs.DialogBoxAvatars[0]);
+			if (m_xmlDialogs.DialogBoxAvatars[0] > 0) {
+				m_tDialogBox.setDialogBoxAvatar(m_DialogBoxAvatars.getDialogBoxAvatar(1));
+			}
 			
 				// Adding to layers
 			s_layerForeground.add(m_tDialogBox.m_aGraphics);
@@ -220,6 +228,13 @@ package
 				if (FlxG.keys.justPressed("SPACE") || FlxG.keys.justPressed("ENTER")) {
 					if (m_tDialogLength - 1 > 0) {
 						m_tDialogLength--; // cpt
+						// update DialogBoxAvatar
+						var next_DialogBoxAvatar_id = m_xmlDialogs.DialogBoxAvatars[m_xmlDialogs.next];
+						var new_DialogBoxAvatar = m_DialogBoxAvatars.getDialogBoxAvatar(next_DialogBoxAvatar_id);
+						if(new_DialogBoxAvatar != null)
+							m_tDialogBox.setDialogBoxAvatar(new_DialogBoxAvatar); // displaying the next DialogBoxAvatar
+							
+						// update dialog
 						m_tDialogBox.setText(m_xmlDialogs.dialogs[m_xmlDialogs.next]); // displaying the next text
 						m_xmlDialogs.next += 1; // updating next
 					}else {

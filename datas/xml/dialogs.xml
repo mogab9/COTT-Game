@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <data>
 	<level>
-		<dialog>Damned, we are trapped like rabbits!</dialog>
-		<dialog>Maybe we can find out something ...</dialog>
-		<dialog>Yeah! Let's find an exit!</dialog>
+		<dialog avatar="1">Damned, we are trapped like rabbits!</dialog>
+		<dialog avatar="2">Maybe we can find out something ...</dialog>
+		<dialog avatar="1">Yeah! Let's find an exit!</dialog>
 	</level>
 </data>
