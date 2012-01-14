@@ -35,6 +35,8 @@ package
 		//HUD
 		private var currentRabbit:FlxText;
 		
+		
+		
 		public function PlayState() {
 		}
 		
@@ -57,6 +59,12 @@ package
 			endLevelGroup = new FlxGroup; // endLevelGroup 
 			s_layerForeground = new FlxGroup;
 			s_layerOverlay = new FlxGroup;
+			add(levelOne.masterLayer.members[1].members[1]._fireball);
+			/*
+			_fireball = new FlxGroup();// fireball group		
+			add(_fireball);
+			fireflag = false;//init to false
+			*/
 			
 			//--------Pause Menu---------
 			title = new FlxText(0, 16, FlxG.width, "Pause");
@@ -159,7 +167,7 @@ package
 				// goToNextLevel();
 				
 			}			
-			
+			/*
 			/*
 			 * --------------------------------------------------------
 			 * 			STEP 2 = the pause menu
@@ -244,5 +252,6 @@ package
 				}
 			}
 		}
+		
 	}
 }
