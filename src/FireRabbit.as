@@ -17,7 +17,6 @@ package
 			super(X, Y);
 			
 			_fireball = new FlxGroup();// fireball group		
-			//add(_fireball);
 			fireflag = false;//init to false
 			
 			//	Load the player.png into this sprite.
@@ -50,13 +49,6 @@ package
 				spawnBullet(getBulletSpawnPosition(facing));
 			}
 			
-			//handler for fireball
-			if(FlxG.keys.justPressed("W"))
-			{
-				//get the position in FireRabbit and then create the fireball and shoot
-				spawnBullet(getBulletSpawnPosition(facing));
-			
-			}
 			//make the fireball disappear when it bump into walls or overpass the boundry
 			if (fireflag != false) {	
 				if (_fireball.members[0].velocity.x==0 ||_fireball.members[0].x<0 ||_fireball.members[0].x>FlxG.width)
