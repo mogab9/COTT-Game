@@ -2,10 +2,11 @@ package
 {
 	import flash.display.Graphics;
 	import flash.ui.Mouse;
-	import ui.DialogBoxAvatar;
-	import ui.DialogBox;
 	
 	import org.flixel.*;
+	
+	import ui.DialogBox;
+	import ui.DialogBoxAvatar;
 	
 	public class PlayState extends FlxState
 	{
@@ -34,6 +35,7 @@ package
 		
 		//HUD
 		private var currentRabbit:FlxText;
+		private var currentRabbit2:FlxSprite;
 		
 		
 		
@@ -122,6 +124,11 @@ package
 			currentRabbit.scrollFactor.y = 0;
 			currentRabbit.text = "1";
 			add(currentRabbit);
+			
+			currentRabbit2 = new FlxSprite(20, 2);
+			currentRabbit2.scrollFactor.x = 0;
+			currentRabbit2.scrollFactor.y = 0;
+			add(currentRabbit2);
 		}
 
 		override public function update():void {
@@ -202,6 +209,7 @@ package
 			processDialogsInput(); // Input listeners for Dialogs
 			
 			currentRabbit.text = Player.currentId.toString();
+			currentRabbit2.loadGraphic(players[Player.currentId-1].playerPNG, true, true, 16, 18, true);
 			//FlxG.log(Player.currentId); 
 			
 			/*
