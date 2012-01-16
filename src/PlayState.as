@@ -34,8 +34,8 @@ package
 		public var endLevelGroup:FlxGroup;
 		
 		//HUD
-		private var currentRabbit:FlxText;
-		private var currentRabbit2:FlxSprite;
+		private var currentRabbit_id:FlxText;
+		private var currentRabbit_img:FlxSprite;
 		
 		
 		
@@ -117,18 +117,20 @@ package
 			add(s_layerForeground);
 			//add(pauseGroup):
 			
-			currentRabbit = new FlxText(5, 5, 100);
-			currentRabbit.color = 0xffffffff;
-			currentRabbit.shadow = 0xff000000;
-			currentRabbit.scrollFactor.x = 0;
-			currentRabbit.scrollFactor.y = 0;
-			currentRabbit.text = "1";
-			add(currentRabbit);
 			
-			currentRabbit2 = new FlxSprite(20, 2);
-			currentRabbit2.scrollFactor.x = 0;
-			currentRabbit2.scrollFactor.y = 0;
-			add(currentRabbit2);
+			//---------- HUD ----------
+			currentRabbit_id = new FlxText(5, 5, 100);
+			currentRabbit_id.color = 0xffffffff;
+			currentRabbit_id.shadow = 0xff000000;
+			currentRabbit_id.scrollFactor.x = 0;
+			currentRabbit_id.scrollFactor.y = 0;
+			currentRabbit_id.text = "1";
+			add(currentRabbit_id);
+			
+			currentRabbit_img = new FlxSprite(20, 2);
+			currentRabbit_img.scrollFactor.x = 0;
+			currentRabbit_img.scrollFactor.y = 0;
+			add(currentRabbit_img);
 		}
 
 		override public function update():void {
@@ -208,9 +210,8 @@ package
 			}
 			processDialogsInput(); // Input listeners for Dialogs
 			
-			currentRabbit.text = Player.currentId.toString();
-			currentRabbit2.loadGraphic(players[Player.currentId-1].playerPNG, true, true, 16, 18, true);
-			//FlxG.log(Player.currentId); 
+			currentRabbit_id.text = Player.currentId.toString();
+			currentRabbit_img.loadGraphic(players[Player.currentId-1].playerPNG, true, true, 16, 18, true);
 			
 			/*
 			 * --------------------------------------------------------
