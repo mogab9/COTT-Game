@@ -18,13 +18,14 @@ package ui
 		
 		private var m_bActive:Boolean = false;
 		
-		public function DialogBox() 
+		public function DialogBox(posScreenX:Number, posScreenY:Number) 
 		{
 			m_tBackingBox = new FlxSprite(0,90);
 			m_tBackingBox.loadGraphic(imgBackingBox);
 			//m_tBackingBox.x = (FlxG.width - m_tBackingBox.width) * 0.5;
-			m_tBackingBox.x = -10;
-			m_tBackingBox.y = 150;
+			trace(posScreenX + " - " + posScreenY);
+			m_tBackingBox.x = -10-posScreenX;
+			m_tBackingBox.y = 150-posScreenY;
 			m_tText = new FlxText(m_tBackingBox.x + 90, m_tBackingBox.y, 250, "", false);
 			//m_tText = new FlxText(m_tBackingBox.x + 8, 120, m_tBackingBox.width -16);
 			m_tText.setFormat("Istria", 16, 0xff2d1601);

@@ -95,7 +95,8 @@ package
 			
 			//----------Dialog-----------
 				//Init
-			m_tDialogBox = new DialogBox;
+			trace(levelOne.mainLayer.getScreenXY().x + " --- " + levelOne.mainLayer.getScreenXY().y);
+			m_tDialogBox = new DialogBox(levelOne.mainLayer.getScreenXY().x, levelOne.mainLayer.getScreenXY().y);
 			m_DialogBoxAvatars = new DialogBoxAvatar;
 			
 				// Loading Xml Dialogs

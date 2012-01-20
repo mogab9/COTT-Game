@@ -15,14 +15,16 @@ package
 		public function Player(X:Number, Y:Number)
 		{
 			nbPlayers++;
-			trace(nbPlayers);
 			
 			idPlayer = nbPlayers;
 			currentId = 1;
 
 			
 			// The first character created is the one who'll be active at the beginning of the game
-			if (idPlayer == 1) isActive = true; 
+			if (idPlayer == 1) {
+				isActive = true; 
+				FlxG.camera.follow(this);
+			}
 			
 			//	As this extends FlxSprite we need to call super() to ensure all of the parent variables we need are created
 			super(X, Y);

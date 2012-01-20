@@ -76,8 +76,6 @@ package
 			fireflag = true;
 			//add to fireball group to draw
 			_fireball.add(fireball);
-		}
-		
-		
+		}		
 	}
 }
