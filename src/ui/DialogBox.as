@@ -20,21 +20,29 @@ package ui
 		
 		public function DialogBox(posScreenX:Number, posScreenY:Number) 
 		{
+			var dialogBoxPosX =  posScreenX - 100;
+			var dialogBoxPosY = posScreenY + 90;
+			
+			// backbox
 			m_tBackingBox = new FlxSprite(0,90);
 			m_tBackingBox.loadGraphic(imgBackingBox);
-			//m_tBackingBox.x = (FlxG.width - m_tBackingBox.width) * 0.5;
-			trace(posScreenX + " - " + posScreenY);
-			m_tBackingBox.x = -10-posScreenX;
-			m_tBackingBox.y = 150-posScreenY;
+			m_tBackingBox.x =  dialogBoxPosX;
+			m_tBackingBox.y = dialogBoxPosY;
+			
+			// text box
 			m_tText = new FlxText(m_tBackingBox.x + 90, m_tBackingBox.y, 250, "", false);
-			//m_tText = new FlxText(m_tBackingBox.x + 8, 120, m_tBackingBox.width -16);
 			m_tText.setFormat("Istria", 16, 0xff2d1601);
+			
+			// adding to stage
 			m_aGraphics = new FlxGroup;
 			m_aGraphics.add(m_tBackingBox);
 			m_aGraphics.add(m_tText);
 			m_aGraphics.exists = false;
+			
 			//DialogBoxAvatars
 			m_tDialogBoxAvatarBox = new FlxSprite(10, 158);
+			m_tDialogBoxAvatarBox.x = dialogBoxPosX + 21;
+			m_tDialogBoxAvatarBox.y = dialogBoxPosY + 6;
 			m_aGraphics.add(m_tDialogBoxAvatarBox);
 		}
 		
