@@ -215,7 +215,6 @@ package
 			processDialogsInput(); // Input listeners for Dialogs
 			
 			currentRabbit_id.text = Player.currentId.toString();
-			currentRabbit_img.loadGraphic(players[Player.currentId-1].playerPNG, true, true, 16, 18, true);
 			
 			/*
 			 * --------------------------------------------------------
