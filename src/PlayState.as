@@ -61,7 +61,12 @@ package
 			endLevelGroup = new FlxGroup; // endLevelGroup 
 			s_layerForeground = new FlxGroup;
 			s_layerOverlay = new FlxGroup;
-			add(levelOne.masterLayer.members[1].members[1]._fireball);
+			
+			for (var i:int = 0 ; i < players.length ; i ++) {
+				if (players[i] is FireRabbit) {
+					add(players[i]._fireball);
+				}
+			}
 			/*
 			_fireball = new FlxGroup();// fireball group		
 			add(_fireball);
@@ -222,11 +227,13 @@ package
 			if (!FlxG.paused) {
 				super.update();
 				flash.ui.Mouse.hide();
-				FlxG.collide(null, levelOne.mainLayer); // WTF collide NULL with mainLayer Oo & it works ... it's magiccccc
+				FlxG.collide(levelOne.masterLayer, levelOne.mainLayer);
+				
+				trace("x = " + players[0].x + " // y = " + players[0].y);
 			}
 		}
 		
-		override public function draw():void {
+		override public function draw():void {		
 			super.draw();
 			
 			if (m_tDialogBox.getIsActive == true) {
@@ -247,8 +254,8 @@ package
 					if (m_tDialogLength - 1 > 0) {
 						m_tDialogLength--; // cpt
 						// update DialogBoxAvatar
-						var next_DialogBoxAvatar_id = m_xmlDialogs.DialogBoxAvatars[m_xmlDialogs.next];
-						var new_DialogBoxAvatar = m_DialogBoxAvatars.getDialogBoxAvatar(next_DialogBoxAvatar_id);
+						var next_DialogBoxAvatar_id:Number = m_xmlDialogs.DialogBoxAvatars[m_xmlDialogs.next];
+						var new_DialogBoxAvatar:Class = m_DialogBoxAvatars.getDialogBoxAvatar(next_DialogBoxAvatar_id);
 						if(new_DialogBoxAvatar != null)
 							m_tDialogBox.setDialogBoxAvatar(new_DialogBoxAvatar); // displaying the next DialogBoxAvatar
 							

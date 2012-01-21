@@ -20,8 +20,8 @@ package ui
 		
 		public function DialogBox(posScreenX:Number, posScreenY:Number) 
 		{
-			var dialogBoxPosX =  posScreenX - 100;
-			var dialogBoxPosY = posScreenY + 90;
+			var dialogBoxPosX:Number =  posScreenX - 100;
+			var dialogBoxPosY:Number = posScreenY + 90;
 			
 			// backbox
 			m_tBackingBox = new FlxSprite(0,90);
