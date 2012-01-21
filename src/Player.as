@@ -77,6 +77,7 @@ package
 					
 					//	By default the sprite is facing to the right.
 					//	Changing this tells Flixel to flip the sprite frames to show the left-facing ones instead.
+					
 					facing = FlxObject.RIGHT;
 				break;
 				case 2:

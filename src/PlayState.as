@@ -135,6 +135,7 @@ package
 			currentRabbit_img = new FlxSprite(20, 2);
 			currentRabbit_img.scrollFactor.x = 0;
 			currentRabbit_img.scrollFactor.y = 0;
+			currentRabbit_img.loadGraphic(players[Player.currentId-1].playerPNG, true, true, 16, 18, true);
 			add(currentRabbit_img);
 		}
 
@@ -228,6 +229,16 @@ package
 				// TODO collide the fireballs with the decor
 				
 				//trace("x = " + players[0].x + " // y = " + players[0].y);
+			}
+			
+			/*
+			 * --------------------------------------------------------
+			 *  			STEP 5 = HUD character displayed
+ 			 * --------------------------------------------------------
+			 */
+			// TODO fix this shit by loading once every rabbit graphic and put it in a tableau
+			if (FlxG.keys.ONE || FlxG.keys.TWO || FlxG.keys.THREE || FlxG.keys.FOUR) {
+				currentRabbit_img.loadGraphic(players[Player.currentId-1].playerPNG, true, true, 16, 18, true);
 			}
 		}
 		
