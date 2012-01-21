@@ -80,7 +80,7 @@ package
 			playButton = new FlxButton(FlxG.width / 2 - 40, FlxG.height / 2, "Resume");
 
 			playButton.onUp = function():void {
-				trace("pressBackGame triggered");
+				trace("Back to the game");
 				FlxG.paused = false;
 			}
 			pauseGroup.add(playButton);
@@ -93,14 +93,14 @@ package
 			playButton = new FlxButton(FlxG.width / 2 - 40, FlxG.height / 2, "Next Level");
 
 			playButton.onUp = function():void {
-				trace("pressNextLevel triggered");
+				trace("Next Level (aka restart level)");
+				FlxG.switchState(new PlayState());
 			}
 			endLevelGroup.add(playButton);
 			endLevelGroup.add(title);
 			
 			//----------Dialog-----------
 				//Init
-			trace(levelOne.mainLayer.getScreenXY().x + " --- " + levelOne.mainLayer.getScreenXY().y);
 			m_tDialogBox = new DialogBox(levelOne.mainLayer.getScreenXY().x, levelOne.mainLayer.getScreenXY().y);
 			m_DialogBoxAvatars = new DialogBoxAvatar;
 			
@@ -108,7 +108,6 @@ package
 			m_xmlDialogs = new XmlDialogs(1); // level number
 			m_tDialogBox.setText(m_xmlDialogs.dialogs[0]);
 			m_tDialogLength = m_xmlDialogs.dialogs.length;
-			trace(m_xmlDialogs.DialogBoxAvatars[0]);
 			if (m_xmlDialogs.DialogBoxAvatars[0] > 0) {
 				m_tDialogBox.setDialogBoxAvatar(m_DialogBoxAvatars.getDialogBoxAvatar(1));
 			}
@@ -179,8 +178,7 @@ package
 
 				flash.ui.Mouse.show();
 				return endLevelGroup.update();
-				// goToNextLevel();
-				
+				// goToNextLevel();				
 			}			
 			/*
 			/*
@@ -227,9 +225,10 @@ package
 			if (!FlxG.paused) {
 				super.update();
 				flash.ui.Mouse.hide();
-				FlxG.collide(levelOne.masterLayer, levelOne.mainLayer);
+				FlxG.collide(levelOne.masterLayer, levelOne.mainLayer); 
+				// TODO collide the fireballs with the decor
 				
-				trace("x = " + players[0].x + " // y = " + players[0].y);
+				//trace("x = " + players[0].x + " // y = " + players[0].y);
 			}
 		}
 		
