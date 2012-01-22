@@ -36,6 +36,8 @@ package
 		//HUD
 		private var currentRabbit_id:FlxText;
 		private var currentRabbit_img:FlxSprite;
+		private var hearthRabbit:FlxSprite;
+		private var healthRabbit:FlxText;
 		
 		
 		
@@ -124,6 +126,7 @@ package
 			
 			
 			//---------- HUD ----------
+			//current rabbit ID
 			currentRabbit_id = new FlxText(5, 5, 100);
 			currentRabbit_id.color = 0xffffffff;
 			currentRabbit_id.shadow = 0xff000000;
@@ -131,12 +134,27 @@ package
 			currentRabbit_id.scrollFactor.y = 0;
 			currentRabbit_id.text = "1";
 			add(currentRabbit_id);
-			
+			//current rabbit img
 			currentRabbit_img = new FlxSprite(20, 2);
 			currentRabbit_img.scrollFactor.x = 0;
 			currentRabbit_img.scrollFactor.y = 0;
 			currentRabbit_img.loadGraphic(players[Player.currentId-1].playerPNG, true, true, 16, 18, true);
 			add(currentRabbit_img);
+			//health 
+			healthRabbit = new FlxText(70, 5, 100);
+			healthRabbit.color = 0xffffffff;
+			healthRabbit.shadow = 0xff000000;
+			healthRabbit.scrollFactor.x = 0;
+			healthRabbit.scrollFactor.y = 0;
+			healthRabbit.text = "1";
+			add(healthRabbit);
+			//img hearth
+			hearthRabbit = new FlxSprite(50, 2);
+			hearthRabbit.scrollFactor.x = 0;
+			hearthRabbit.scrollFactor.y = 0;
+			add(hearthRabbit);
+			
+			
 		}
 
 		override public function update():void {
@@ -215,7 +233,13 @@ package
 			}
 			processDialogsInput(); // Input listeners for Dialogs
 			
+			//current rabbit
 			currentRabbit_id.text = Player.currentId.toString();
+			currentRabbit_img.loadGraphic(players[Player.currentId-1].playerPNG, true, true, 16, 18, true);
+			//health
+			healthRabbit.text = players[Player.currentId-1].health.toString();
+			hearthRabbit.loadGraphic(players[Player.currentId-1].ImgHealth, true, true, 16, 18, true);
+
 			
 			/*
 			 * --------------------------------------------------------

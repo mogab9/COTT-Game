@@ -6,6 +6,8 @@ package
 	public class Player extends FlxSprite
 	{
 		[Embed(source = '../assets/textures/actors/player.png')] public var playerPNG:Class;
+		[Embed(source = "../assets/textures/ui/health.png")] public var ImgHealth:Class;
+		//[Embed(source = "../assets/textures/ui/health_not.png")] public var ImgHealth_not:Class;
 		protected var isActive:Boolean;
 		protected var idPlayer:uint;
 		protected static var nbPlayers:uint;
@@ -18,7 +20,7 @@ package
 			
 			idPlayer = nbPlayers;
 			currentId = 1;
-
+			
 			
 			// The first character created is the one who'll be active at the beginning of the game
 			if (idPlayer == 1) {
@@ -28,6 +30,8 @@ package
 			
 			//	As this extends FlxSprite we need to call super() to ensure all of the parent variables we need are created
 			super(X, Y);
+			
+			super.health = 5;
 			
 			//	Load the player.png into this sprite.
 			//	The 2nd parameter tells Flixel it's a sprite sheet and it should chop it up into 16x18 sized frames.
