@@ -36,8 +36,9 @@ package
 		//HUD
 		private var currentRabbit_id:FlxText;
 		private var currentRabbit_img:FlxSprite;
-		private var hearthRabbit:FlxSprite;
+		private var heartRabbit:FlxSprite;
 		private var healthRabbit:FlxText;
+		private var tabRabbits:Vector.<FlxSprite>;
 		
 		
 		
@@ -125,8 +126,12 @@ package
 			//add(pauseGroup):
 			
 			
-			//---------- HUD ----------
-			//current rabbit ID
+			/*
+			* --------------------------------------------------------
+			*  			                HUD
+			* --------------------------------------------------------
+			*/
+			//-----------------current rabbit ID -----------------
 			currentRabbit_id = new FlxText(5, 5, 100);
 			currentRabbit_id.color = 0xffffffff;
 			currentRabbit_id.shadow = 0xff000000;
@@ -134,13 +139,26 @@ package
 			currentRabbit_id.scrollFactor.y = 0;
 			currentRabbit_id.text = "1";
 			add(currentRabbit_id);
-			//current rabbit img
+			
+			//-----------------Current rabbit img-----------------
+			//table of rabbits images
+			tabRabbits = new Vector.<FlxSprite>(players.length);
+			for(var j:uint=0; i< players.length; i++){
+				tabRabbits[j] = new FlxSprite(20, 2);
+				tabRabbits[j].scrollFactor.x = 0;
+				tabRabbits[j].scrollFactor.y = 0;
+				tabRabbits[j].loadGraphic(players[j].playerPNG, true, true, 16, 18, true);
+			}
+			//image of the HUD
 			currentRabbit_img = new FlxSprite(20, 2);
 			currentRabbit_img.scrollFactor.x = 0;
 			currentRabbit_img.scrollFactor.y = 0;
-			currentRabbit_img.loadGraphic(players[Player.currentId-1].playerPNG, true, true, 16, 18, true);
+			//currentRabbit_img.loadGraphic(players[Player.currentId-1].playerPNG, true, true, 16, 18, true);*/
+			currentRabbit_img = tabRabbits[Player.currentId-1];
 			add(currentRabbit_img);
-			//health 
+			
+			//-----------------health -----------------
+			//health ID 
 			healthRabbit = new FlxText(70, 5, 100);
 			healthRabbit.color = 0xffffffff;
 			healthRabbit.shadow = 0xff000000;
@@ -148,11 +166,13 @@ package
 			healthRabbit.scrollFactor.y = 0;
 			healthRabbit.text = "1";
 			add(healthRabbit);
+			
 			//img hearth
-			hearthRabbit = new FlxSprite(50, 2);
-			hearthRabbit.scrollFactor.x = 0;
-			hearthRabbit.scrollFactor.y = 0;
-			add(hearthRabbit);
+			heartRabbit = new FlxSprite(50, 2);
+			heartRabbit.scrollFactor.x = 0;
+			heartRabbit.scrollFactor.y = 0;
+			add(heartRabbit);
+			heartRabbit.loadGraphic(players[Player.currentId-1].ImgHealth, true, true, 16, 18, true);
 			
 			
 		}
@@ -256,10 +276,10 @@ package
 			 */
 			//health
 			healthRabbit.text = players[Player.currentId-1].health.toString();
-			hearthRabbit.loadGraphic(players[Player.currentId-1].ImgHealth, true, true, 16, 18, true);
 			// TODO fix this shit by loading once every rabbit graphic and put it in a tableau
 			if (FlxG.keys.ONE || FlxG.keys.TWO || FlxG.keys.THREE || FlxG.keys.FOUR) {
-				currentRabbit_img.loadGraphic(players[Player.currentId-1].playerPNG, true, true, 16, 18, true);
+				//currentRabbit_img.loadGraphic(players[Player.currentId-1].playerPNG, true, true, 16, 18, true);
+				currentRabbit_img = tabRabbits[Player.currentId-1];
 				currentRabbit_id.text = Player.currentId.toString();
 			}
 		}
