@@ -233,12 +233,6 @@ package
 			}
 			processDialogsInput(); // Input listeners for Dialogs
 			
-			//current rabbit
-			currentRabbit_id.text = Player.currentId.toString();
-			currentRabbit_img.loadGraphic(players[Player.currentId-1].playerPNG, true, true, 16, 18, true);
-			//health
-			healthRabbit.text = players[Player.currentId-1].health.toString();
-			hearthRabbit.loadGraphic(players[Player.currentId-1].ImgHealth, true, true, 16, 18, true);
 
 			
 			/*
@@ -260,9 +254,13 @@ package
 			 *  			STEP 5 = HUD character displayed
  			 * --------------------------------------------------------
 			 */
+			//health
+			healthRabbit.text = players[Player.currentId-1].health.toString();
+			hearthRabbit.loadGraphic(players[Player.currentId-1].ImgHealth, true, true, 16, 18, true);
 			// TODO fix this shit by loading once every rabbit graphic and put it in a tableau
 			if (FlxG.keys.ONE || FlxG.keys.TWO || FlxG.keys.THREE || FlxG.keys.FOUR) {
 				currentRabbit_img.loadGraphic(players[Player.currentId-1].playerPNG, true, true, 16, 18, true);
+				currentRabbit_id.text = Player.currentId.toString();
 			}
 		}
 		
