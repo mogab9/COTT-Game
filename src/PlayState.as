@@ -142,8 +142,8 @@ package
 			
 			//-----------------Current rabbit img-----------------
 			//table of rabbits images
-			tabRabbits = new Vector.<FlxSprite>(players.length);
-			for(var j:uint=0; i< players.length; i++){
+			tabRabbits = new Vector.<FlxSprite>(players.length, true);
+			for(var j:uint=0; j< players.length; j++){
 				tabRabbits[j] = new FlxSprite(20, 2);
 				tabRabbits[j].scrollFactor.x = 0;
 				tabRabbits[j].scrollFactor.y = 0;
@@ -171,10 +171,8 @@ package
 			heartRabbit = new FlxSprite(50, 2);
 			heartRabbit.scrollFactor.x = 0;
 			heartRabbit.scrollFactor.y = 0;
+			heartRabbit.loadGraphic(players[Player.currentId-1].ImgHealth, true, true, 16, 18, true); //DON'T WORK !!!!
 			add(heartRabbit);
-			heartRabbit.loadGraphic(players[Player.currentId-1].ImgHealth, true, true, 16, 18, true);
-			
-			
 		}
 
 		override public function update():void {
@@ -276,9 +274,8 @@ package
 			 */
 			//health
 			healthRabbit.text = players[Player.currentId-1].health.toString();
-			// TODO fix this shit by loading once every rabbit graphic and put it in a tableau
 			if (FlxG.keys.ONE || FlxG.keys.TWO || FlxG.keys.THREE || FlxG.keys.FOUR) {
-				//currentRabbit_img.loadGraphic(players[Player.currentId-1].playerPNG, true, true, 16, 18, true);
+				//FlxG.log(Player.currentId-1);
 				currentRabbit_img = tabRabbits[Player.currentId-1];
 				currentRabbit_id.text = Player.currentId.toString();
 			}
