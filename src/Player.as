@@ -201,7 +201,7 @@ package
 				if (velocity.x != 0)
 				{
 					play("walk");
-					trace(x + ' ' + y);
+					//trace(x + ' ' + y);
 				}
 				else
 				{
