@@ -13,8 +13,11 @@ package
 		
 		public var background:FlxTilemap;
 		public var map:FlxTilemap;
+		
 		//public var stars:FlxGroup;
 		//public var cats:Cats;
+		
+		public var blops:Blops;
 		
 		//private var elevator1:Elevator;
 		//private var elevator2:Elevator;
@@ -50,7 +53,9 @@ package
 			Registry.levelExit = new FlxPoint(544, 48);
 			add(exit);
 			
+			
 			add(map);
+			addBlops();
 			//add(elevator1);
 			//add(elevator2);
 			
@@ -60,6 +65,14 @@ package
 			{
 				addCats();
 			}*/
+			
+		}
+		
+		private function addBlops():void
+		{
+			blops = new Blops;
+
+			blops.addBlop(128, 96);
 		}
 		
 		/*private function addCats():void
