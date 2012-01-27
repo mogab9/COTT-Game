@@ -5,7 +5,9 @@ package
 	
 	public class FireRabbit extends Player
 	{
-		[Embed(source = '../assets/textures/actors/firerabbit.png')] private var playerPNGFire:Class;
+		[Embed(source = '../assets/textures/actors/firerabbit.png')] 		private var playerPNGFire:Class;
+		[Embed(source = '../assets/textures/actors/firerabbit_hud.png')] 	private var playerPNGFire_HUD:Class;
+		
 		//add a group to include all the fireball for handling
 		public var _fireball:FlxGroup;
 		//flag to show if fireball exist or not, defaut set to false
@@ -16,7 +18,7 @@ package
 			//	As this extends Rabbit we need to call super() to ensure all of the parent variables we need are created
 			super(X, Y);
 			super.playerPNG = playerPNGFire;
-
+			super.playerPNG_HUD = playerPNGFire_HUD;
 			
 			_fireball = new FlxGroup();// fireball group		
 			fireflag = false;//init to false

@@ -13,7 +13,7 @@ package
 			super(X, Y);
 			
 			// The door is only a image - it has not physical properties in the game
-			this.active = false;
+			this.allowCollisions = NONE;
 			
 			//	Load the end.png into this sprite.
 			//	The 2nd parameter tells Flixel it's a sprite sheet and it should chop it up into 16x34 sized frames.

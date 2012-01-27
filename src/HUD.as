@@ -5,40 +5,55 @@ package
 
 	public class HUD extends FlxGroup
 	{
-		private var currentRabbit_id:FlxText;
 		private var currentRabbit_img:FlxSprite;
+		
+		private var tabRabbits:Vector.<FlxSprite>;
+		private var tabRabbitsActive:Vector.<FlxSprite>;
+		private var tabRabbitsInactive:Vector.<FlxSprite>;
+			
+		// health
 		private var heartRabbit:FlxSprite;
 		private var healthRabbit:FlxText;
-		private var tabRabbits:Vector.<FlxSprite>;
 		
 		public function HUD()
 		{			
 			//----------rabbit-----------
 			//current rabbit ID
-			currentRabbit_id = new FlxText(5, 5, 100);
+			/*currentRabbit_id = new FlxText(5, 5, 100);
 			currentRabbit_id.color = 0xffffffff;
 			currentRabbit_id.shadow = 0xff000000;
 			currentRabbit_id.scrollFactor.x = 0;
 			currentRabbit_id.scrollFactor.y = 0;
 			currentRabbit_id.text = "1";
-			add(currentRabbit_id);
+			add(currentRabbit_id);*/
 			
-			//Current rabbit img
-			//table of rabbits images
-			tabRabbits = new Vector.<FlxSprite>(Player.nbPlayers, true);
-			for(var j:uint=0; j< Player.nbPlayers; j++){
-				tabRabbits[j] = new FlxSprite(20, 2);
-				tabRabbits[j].scrollFactor.x = 0;
-				tabRabbits[j].scrollFactor.y = 0;
-				tabRabbits[j].loadGraphic(Registry.players[j].playerPNG, true, true, 16, 18, true);
+			//table of rabbits images for the HUD
+			tabRabbits = new Vector.<FlxSprite>(Registry.players.length, true);
+			tabRabbitsActive = new Vector.<FlxSprite>(Registry.players.length, true);
+			tabRabbitsInactive = new Vector.<FlxSprite>(Registry.players.length, true);
+			
+			for (var i:uint = 0; i < Registry.players.length; i++) {
+				tabRabbitsActive[i] = new FlxSprite(20 + (i * 16), 2);
+				tabRabbitsInactive[i] = new FlxSprite(20 + (i * 16), 2);
+				
+				tabRabbitsActive[i].scrollFactor.x = 0;
+				tabRabbitsInactive[i].scrollFactor.x = 0;
+				
+				tabRabbitsActive[i].scrollFactor.y = 0;
+				tabRabbitsInactive[i].scrollFactor.y = 0;
+								
+				tabRabbitsActive[i].loadGraphic(Registry.players[i].playerPNG, true, true, 16, 18, true);
+				tabRabbitsInactive[i].loadGraphic(Registry.players[i].playerPNG_HUD, true, true, 16, 18, true);
+				
+				if (i == Player.currentId-1) {
+					tabRabbits[i] = tabRabbitsActive[i];
+				}
+				else {
+					tabRabbits[i] = tabRabbitsInactive[i]
+				}
+				add(tabRabbits[i]);
 			}
-			//image of the HUD
-			currentRabbit_img = new FlxSprite(20, 2);
-			currentRabbit_img.scrollFactor.x = 0;
-			currentRabbit_img.scrollFactor.y = 0;
-			//currentRabbit_img.loadGraphic(players[Player.currentId-1].playerPNG, true, true, 16, 18, true);
-			currentRabbit_img = tabRabbits[Player.currentId-1];
-			add(currentRabbit_img);
+			
 			
 			//-----------------health -----------------
 			//health ID 
@@ -63,10 +78,48 @@ package
 			//healthRabbit.text = players[Player.currentId-1].health.toString();
 			if (FlxG.keys.ONE || FlxG.keys.TWO || FlxG.keys.THREE || FlxG.keys.FOUR) {
 				//FlxG.log(Player.currentId - 1);
-				remove(currentRabbit_img);
-				currentRabbit_img = tabRabbits[Player.currentId - 1];
-				add(currentRabbit_img);
-				currentRabbit_id.text = Player.currentId.toString();
+				if (FlxG.keys.ONE) {
+					for (var i:uint = 0; i < Registry.players.length; i++) {
+						remove(tabRabbits[i]);
+						tabRabbits[i] = tabRabbitsInactive[i];
+						add(tabRabbits[i]);
+					}
+					remove(tabRabbits[0]);
+					tabRabbits[0] = tabRabbitsActive[0];
+					add(tabRabbits[0]);
+				}
+				if (FlxG.keys.TWO && Player.nbPlayers >= 2) {
+					for (var i:uint = 0; i < Registry.players.length; i++) {
+						remove(tabRabbits[i]);
+						tabRabbits[i] = tabRabbitsInactive[i];
+						add(tabRabbits[i]);
+					}
+					remove(tabRabbits[1]);
+					tabRabbits[1] = tabRabbitsActive[1];
+					add(tabRabbits[1]);
+				}
+				if (FlxG.keys.THREE && Player.nbPlayers >= 3) {
+					for (var i:uint = 0; i < Registry.players.length; i++) {
+						remove(tabRabbits[i]);
+						tabRabbits[i] = tabRabbitsInactive[i];
+						add(tabRabbits[i]);
+					}
+					remove(tabRabbits[2]);
+					tabRabbits[2] = tabRabbitsActive[2];
+					add(tabRabbits[2]);
+					
+				}
+				if (FlxG.keys.FOUR && Player.nbPlayers >= 4) {
+					for (var i:uint = 0; i < Registry.players.length; i++) {
+						remove(tabRabbits[i]);
+						tabRabbits[i] = tabRabbitsInactive[i];
+						add(tabRabbits[i]);
+					}
+					remove(tabRabbits[3]);
+					tabRabbits[3] = tabRabbitsActive[3];
+					add(tabRabbits[3]);
+					
+				}
 			}
 		}
 		
