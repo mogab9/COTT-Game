@@ -5,7 +5,8 @@ package
 	
 	public class Player extends FlxSprite
 	{
-		[Embed(source = '../assets/textures/actors/player.png')] public var playerPNG:Class;
+		[Embed(source = '../assets/textures/actors/player.png')] 		public var playerPNG:Class;
+		[Embed(source = '../assets/textures/actors/player_hud.png')] 	public var playerPNG_HUD:Class;
 		
 		private var jumpFX:FlxSound;
 		private var walkFX:FlxSound;
