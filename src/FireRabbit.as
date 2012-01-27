@@ -28,13 +28,6 @@ package
 			height = 16;
 			offset.x = 2;
 			offset.y = 2;
-			
-			//	The Animation sequences we need
-			addAnimation("idle", [0], 0, false);
-			addAnimation("walk", [0, 1, 0, 2], 10, true);
-			addAnimation("jump", [1], 0, false);
-			addAnimation("hurt", [3], 0, false);
-			addAnimation("fire", [4], 5, false);
 		}
 		
 		public function getBulletSpawnPosition(direct:uint):FlxPoint
@@ -56,14 +49,12 @@ package
 				//handler for fireball
 				//get the position in FireRabbit and then create the fireball and shoot
 				spawnBullet(getBulletSpawnPosition(facing));
-				play("fire");
 			}
 			
-			//make the fireball disappear when it bumps into walls or overpass the boundry
+			//make the fireball disappear when it bump into walls or overpass the boundry
 			if (fireflag != false) {	
 				if (_fireball.members[0].velocity.x==0 ||_fireball.members[0].x<0 ||_fireball.members[0].x>FlxG.width)
 				{
-					
 					//kill the first fireball
 					_fireball.members[0].kill;
 					//shift all the fireball to detect the followed fireball
@@ -85,6 +76,7 @@ package
 			fireflag = true;
 			//add to fireball group to draw
 			_fireball.add(fireball);
+			Registry.level.add(fireball);
 		}		
 	}
 }

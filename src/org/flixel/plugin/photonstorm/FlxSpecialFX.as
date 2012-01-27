@@ -2,10 +2,13 @@
  * FlxSpecialFX
  * -- Part of the Flixel Power Tools set
  * 
+ * v1.4 Added BlurFX and CenterSlideFX
+ * v1.3 Renamed DropDown to FloodFill
+ * v1.2 Added GlitchFX and StarfieldFX
  * v1.1 Added SineWaveFX
  * v1.0 First release of the new FlxSpecialFX system
  * 
- * @version 1.0 - May 9th 2011
+ * @version 1.4 - June 12th 2011
  * @link http://www.photonstorm.com
  * @author Richard Davey / Photon Storm
 */
@@ -14,11 +17,14 @@ package org.flixel.plugin.photonstorm
 {
 	import flash.utils.Dictionary;
 	import org.flixel.*;
-	import org.flixel.plugin.photonstorm.FX.DropDownFX;
+	import org.flixel.plugin.photonstorm.FX.BlurFX;
+	import org.flixel.plugin.photonstorm.FX.CenterSlideFX;
+	import org.flixel.plugin.photonstorm.FX.FloodFillFX;
 	import org.flixel.plugin.photonstorm.FX.GlitchFX;
 	import org.flixel.plugin.photonstorm.FX.PlasmaFX;
 	import org.flixel.plugin.photonstorm.FX.RainbowLineFX;
 	import org.flixel.plugin.photonstorm.FX.SineWaveFX;
+	import org.flixel.plugin.photonstorm.FX.StarfieldFX;
 	
 	/**
 	 * FlxSpecialFX is a single point of access to all of the FX Plugins available in the Flixel Power Tools
@@ -62,13 +68,13 @@ package org.flixel.plugin.photonstorm
 		}
 		
 		/**
-		 * Creates a Drop Down Effect
+		 * Creates a Flood Fill Effect
 		 * 
-		 * @return	DropDownFX
+		 * @return	FloodFillFX
 		 */
-		public static function dropDown():DropDownFX
+		public static function floodFill():FloodFillFX
 		{
-			var temp:DropDownFX = new DropDownFX;
+			var temp:FloodFillFX = new FloodFillFX;
 			
 			members[temp] = temp;
 			
@@ -102,6 +108,53 @@ package org.flixel.plugin.photonstorm
 			
 			return members[temp];
 		}
+		
+		/**
+		 * Creates a 2D or 3D Starfield Effect
+		 * 
+		 * @return	StarfieldFX
+		 */
+		public static function starfield():StarfieldFX
+		{
+			var temp:StarfieldFX = new StarfieldFX;
+			
+			members[temp] = temp;
+			
+			return members[temp];
+		}
+		
+		/**
+		 * Creates a Blur Effect
+		 * 
+		 * @return	BlurFX
+		 */
+		public static function blur():BlurFX
+		{
+			var temp:BlurFX = new BlurFX;
+			
+			members[temp] = temp;
+			
+			return members[temp];
+		}
+		
+		/**
+		 * Creates a Center Slide Effect
+		 * 
+		 * @return	CenterSlideFX
+		 */
+		public static function centerSlide():CenterSlideFX
+		{
+			var temp:CenterSlideFX = new CenterSlideFX
+			
+			members[temp] = temp;
+			
+			return members[temp];
+		}
+		
+		
+		
+		
+		
 		
 		//	GLOBAL FUNCTIONS
 		
@@ -190,9 +243,7 @@ package org.flixel.plugin.photonstorm
 		{
 			if (members[source])
 			{
-				members[source].active = false;
-				members[source].sprite.kill();
-				members[source].canvas.dispose;
+				members[source].destroy();
 				
 				delete members[source];
 				

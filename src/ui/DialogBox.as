@@ -18,16 +18,13 @@ package ui
 		
 		private var m_bActive:Boolean = false;
 		
-		public function DialogBox(posScreenX:Number, posScreenY:Number) 
-		{
-			var dialogBoxPosX:Number =  posScreenX - 100;
-			var dialogBoxPosY:Number = posScreenY + 90;
-			
+		public function DialogBox() 
+		{			
 			// backbox
 			m_tBackingBox = new FlxSprite(0,90);
 			m_tBackingBox.loadGraphic(imgBackingBox);
-			m_tBackingBox.x =  dialogBoxPosX;
-			m_tBackingBox.y = dialogBoxPosY;
+			m_tBackingBox.x =  -10; // FIX THIS WITH SOME RELATIVE POS
+			m_tBackingBox.y = 120; // FIX THIS  WITH SOME RELATIVE POS
 			
 			// text box
 			m_tText = new FlxText(m_tBackingBox.x + 90, m_tBackingBox.y, 250, "", false);
@@ -41,8 +38,8 @@ package ui
 			
 			//DialogBoxAvatars
 			m_tDialogBoxAvatarBox = new FlxSprite(10, 158);
-			m_tDialogBoxAvatarBox.x = dialogBoxPosX + 21;
-			m_tDialogBoxAvatarBox.y = dialogBoxPosY + 6;
+			m_tDialogBoxAvatarBox.x = m_tBackingBox.x + 21;
+			m_tDialogBoxAvatarBox.y = m_tBackingBox.y + 6;
 			m_aGraphics.add(m_tDialogBoxAvatarBox);
 		}
 		

@@ -2,9 +2,10 @@
  * GlitchFX - Special FX Plugin
  * -- Part of the Flixel Power Tools set
  * 
+ * v1.1 Added changeGlitchValues support
  * v1.0 First release
  * 
- * @version 1.0 - May 21st 2011
+ * @version 1.1 - June 13th 2011
  * @link http://www.photonstorm.com
  * @author Richard Davey / Photon Storm
 */
@@ -36,10 +37,6 @@ package org.flixel.plugin.photonstorm.FX
 		{
 		}
 		
-		//public function createFromClass(source:Class, x:int, y:int, backgroundColor:uint = 0x0):FlxSprite
-		//{
-		//}
-		
 		public function createFromFlxSprite(source:FlxSprite, maxGlitch:uint, maxSkip:uint, autoUpdate:Boolean = false, backgroundColor:uint = 0x0):FlxSprite
 		{
 			sprite = new FlxSprite(source.x, source.y).makeGraphic(source.width + maxGlitch, source.height, backgroundColor);
@@ -62,6 +59,12 @@ package org.flixel.plugin.photonstorm.FX
 			active = true;
 			
 			return sprite;
+		}
+		
+		public function changeGlitchValues(maxGlitch:uint, maxSkip:uint):void
+		{
+			glitchSize = maxGlitch;
+			glitchSkip = maxSkip;
 		}
 		
 		public function draw():void

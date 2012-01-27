@@ -11,7 +11,7 @@ package
 		public var next:int; // number of the next dialog
 		private var level_number:int;
 		
-		[Embed(source='../datas/xml/dialogs.xml', mimeType="application/octet-stream")] public static const xmlFile:Class; 
+		[Embed(source='../assets/xml/dialogs.xml', mimeType="application/octet-stream")] public static const xmlFile:Class; 
 
 		public function XmlDialogs(levelNumber:int) {
 			level_number = levelNumber;

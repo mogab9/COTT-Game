@@ -6,32 +6,39 @@ package
 	public class Player extends FlxSprite
 	{
 		[Embed(source = '../assets/textures/actors/player.png')] public var playerPNG:Class;
+		
+		private var jumpFX:FlxSound;
+		private var walkFX:FlxSound;
+		private var start:FlxPoint;
+		
 		[Embed(source = "../assets/textures/ui/health.png")] public var ImgHealth:Class;
 		//[Embed(source = "../assets/textures/ui/health_not.png")] public var ImgHealth_not:Class;
 		protected var isActive:Boolean;
 		protected var idPlayer:uint;
-		protected static var nbPlayers:uint;
+		public static var nbPlayers:uint;
 		public static var currentId:uint;
-		public static var playstate:PlayState;
 		
-		public function Player(X:Number, Y:Number)
+		public function Player(x:Number, y:Number)
 		{
 			nbPlayers++;
 			
 			idPlayer = nbPlayers;
 			currentId = 1;
 			
-			
 			// The first character created is the one who'll be active at the beginning of the game
-			if (idPlayer == 1) {
-				isActive = true; 
-				FlxG.camera.follow(this);
-			}
+			if (idPlayer == 1)	isActive = true;
 			
 			//	As this extends FlxSprite we need to call super() to ensure all of the parent variables we need are created
-			super(X, Y);
-			
+			super(x, y);
 			super.health = 5;
+			
+			start = new FlxPoint(x, y);
+			
+			jumpFX = new FlxSound();
+			jumpFX.loadEmbedded(jumpSFX);
+			
+			walkFX = new FlxSound();
+			walkFX.loadEmbedded(walkSFX, true);
 			
 			//	Load the player.png into this sprite.
 			//	The 2nd parameter tells Flixel it's a sprite sheet and it should chop it up into 16x18 sized frames.
@@ -70,7 +77,7 @@ package
 					FlxControl.player1.setJumpButton("SPACE", FlxControlHandler.KEYMODE_PRESSED, 200, FlxObject.FLOOR, 250, 200);
 						
 					//	Stop the player running off the edge of the screen and falling into nothing
-					FlxControl.player1.setBounds(0 + 16, 0 + 18, 320 - (2 * 16), 320 - (2 * 18));
+					//FlxControl.player1.setBounds(0 + 16, 0 + 18, 320 - (2 * 16), 320 - (2 * 18));
 					
 					//	Because we are using the MOVEMENT_ACCELERATES type the first value is the acceleration speed of the sprite
 					//	Think of it as the time it takes to reach maximum velocity. A value of 100 means it would take 1 second. A value of 400 means it would take 0.25 of a second.
@@ -79,27 +86,33 @@ package
 					//	Set a downward gravity of 400px/sec
 					FlxControl.player1.setGravity(0, 400);
 					
+					// Set the different states of sounds of the player
+					FlxControl.player1.setSounds(jumpFX, null, walkFX);
+					
 					//	By default the sprite is facing to the right.
 					//	Changing this tells Flixel to flip the sprite frames to show the left-facing ones instead.
 					
 					facing = FlxObject.RIGHT;
 				break;
 				case 2:
-					FlxControl.player2.setBounds(0 + 16, 0 + 18, 320 - (2 * 16), 320 - (2 * 18));
+					//FlxControl.player2.setBounds(0 + 16, 0 + 18, 320 - (2 * 16), 320 - (2 * 18));
 					FlxControl.player2.setMovementSpeed(400, 0, 100, 200, 400, 0);
 					FlxControl.player2.setGravity(0, 400);
+					FlxControl.player2.setSounds(jumpFX, null, walkFX);
 					facing = FlxObject.RIGHT;
 				break;
 				case 3:
-					FlxControl.player3.setBounds(0 + 16, 0 + 18, 320 - (2 * 16), 320 - (2 * 18));
+					//FlxControl.player3.setBounds(0 + 16, 0 + 18, 320 - (2 * 16), 320 - (2 * 18));
 					FlxControl.player3.setMovementSpeed(400, 0, 100, 200, 400, 0);
 					FlxControl.player3.setGravity(0, 400);
+					FlxControl.player3.setSounds(jumpFX, null, walkFX);
 					facing = FlxObject.RIGHT;
 				break;
 				case 4:
-					FlxControl.player4.setBounds(0 + 16, 0 + 18, 320 - (2 * 16), 320 - (2 * 18));
+					//FlxControl.player4.setBounds(0 + 16, 0 + 18, 320 - (2 * 16), 320 - (2 * 18));
 					FlxControl.player4.setMovementSpeed(400, 0, 100, 200, 400, 0);
 					FlxControl.player4.setGravity(0, 400);
+					FlxControl.player4.setSounds(jumpFX, null, walkFX);
 					facing = FlxObject.RIGHT;
 				break;
 			}
@@ -118,7 +131,7 @@ package
 						isActive = true;
 						FlxControl.player1.setCursorControl(false, false, true, true);
 						FlxControl.player1.setJumpButton("SPACE", FlxControlHandler.KEYMODE_PRESSED, 200, FlxObject.FLOOR, 250, 200);
-						FlxG.camera.follow(this);
+						FlxG.camera.follow(this, FlxCamera.STYLE_PLATFORMER);
 					}
 				}
 				else if (isActive) {
@@ -134,7 +147,7 @@ package
 						isActive = true;
 						FlxControl.player2.setCursorControl(false, false, true, true);
 						FlxControl.player2.setJumpButton("SPACE", FlxControlHandler.KEYMODE_PRESSED, 200, FlxObject.FLOOR, 250, 200);
-						FlxG.camera.follow(this);
+						FlxG.camera.follow(this, FlxCamera.STYLE_PLATFORMER);
 					}
 				}
 				else if (isActive) {
@@ -150,7 +163,7 @@ package
 						isActive = true;
 						FlxControl.player3.setCursorControl(false, false, true, true);
 						FlxControl.player3.setJumpButton("SPACE", FlxControlHandler.KEYMODE_PRESSED, 200, FlxObject.FLOOR, 250, 200);
-						FlxG.camera.follow(this);
+						FlxG.camera.follow(this, FlxCamera.STYLE_PLATFORMER);
 					}
 				}
 				else if (isActive) {
@@ -166,7 +179,7 @@ package
 						isActive = true;
 						FlxControl.player4.setCursorControl(false, false, true, true);
 						FlxControl.player4.setJumpButton("SPACE", FlxControlHandler.KEYMODE_PRESSED, 200, FlxObject.FLOOR, 250, 200);
-						FlxG.camera.follow(this);
+						FlxG.camera.follow(this, FlxCamera.STYLE_PLATFORMER);
 					}
 				}
 				else if (isActive) {
@@ -175,11 +188,19 @@ package
 				}
 			}
 			
+			super.update();
+			
+			if (x < 0)
+			{
+				x = 0;
+			}
+			
 			if (touching == FlxObject.FLOOR)
 			{
 				if (velocity.x != 0)
 				{
 					play("walk");
+					//trace(x + ' ' + y);
 				}
 				else
 				{
@@ -189,6 +210,7 @@ package
 			else if (velocity.y < 0)
 			{
 				play("jump");
+				//trace(x + ' ' + y);
 			}
 		}
 		
@@ -211,6 +233,12 @@ package
 					FlxControl.player4.setJumpButton("SPACE", FlxControlHandler.KEYMODE_PRESSED, 0, FlxObject.FLOOR, 250, 200);
 				break;
 			}
-		}		
+		}
+		
+		//	We don't actually kill the player at all, we just reset them
+		public function restart():void
+		{
+			reset(start.x, start.y);
+		}
 	}
 }

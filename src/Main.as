@@ -9,9 +9,10 @@ package
 	{
 		public function Main()
 		{
-			super(320, 240, MenuState, 2, 60, 30);
-			LevelsCompleted.load();
-			forceDebugger = true;
+			super(320, 240, MainMenuState, 2, 60, 60);
+			
+			LevelsCompleted.load(); // load the save system
+			forceDebugger = true; // debugger to remove for the final version
 		}
 	}
 }

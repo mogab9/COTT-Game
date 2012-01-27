@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="utf-8"?>
+<project>
+  <version>2.0.5</version>
+  <bgColor>0x000000</bgColor>
+  <viewPos x="7" y="-7"/>
+  <firstLayersTop>false</firstLayersTop>
+  <spriteEntries currentId="1"/>
+  <layers>
+    <group name="LevelEnd" xScroll="1" yScroll="1" visible="true" open="true" locked="false" exports="true" selected="true">
+      <maplayer name="Sky" xScroll="0.6" yScroll="1" x="0" y="0" width="10" height="1" tileset="backdrop.png" tileWidth="192" tileHeight="336" visible="true" hasHits="false" drawIdx="1" collideIdx="1" eraseIdx="0" locked="true" exports="true" tileSpacingX="192" tileSpacingY="336" xStagger="0" tileOffsetX="0" tileOffsetY="0" isMaster="false" mapType="2d" hasHeight="false" repeatX="false" repeatY="false">
+        <row>1,1,1,1,1,1,1,1,1,1</row>
+      </maplayer>
+      <maplayer name="Map" xScroll="1" yScroll="1" x="0" y="0" width="20" height="21" tileset="tiles.png" tileWidth="16" tileHeight="16" visible="true" hasHits="false" drawIdx="1" collideIdx="31" eraseIdx="0" locked="false" exports="true" tileSpacingX="16" tileSpacingY="16" xStagger="0" tileOffsetX="0" tileOffsetY="0" isMaster="false" mapType="2d" hasHeight="false" repeatX="false" repeatY="false">
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>42,42,42,42,42,42,42,42,42,42,42,42,42,42,42,42,42,42,42,43</row>
+        <row>61,61,61,61,61,61,61,61,61,61,61,61,61,61,61,61,61,61,61,62</row>
+        <row>80,80,79,80,80,80,80,80,80,80,80,80,80,80,80,79,80,80,80,81</row>
+        <row>77,77,77,77,77,77,0,0,0,77,77,77,77,77,77,77,77,77,77,77</row>
+      </maplayer>
+    </group>
+  </layers>
+  <tileMatrix currentMatrix="0" rows="3" cols="3" randomizeMiddle="true" ignoreClear="false" ignoreMapEdges="true" allowSpecialTiles="false" tileset="">
+    <row>
+      <tile>0</tile>
+      <tile>0</tile>
+      <tile>0</tile>
+    </row>
+    <row>
+      <tile>0</tile>
+      <tile>0</tile>
+      <tile>0</tile>
+    </row>
+    <row>
+      <tile>0</tile>
+      <tile>0</tile>
+      <tile>0</tile>
+    </row>
+    <specialConnections>
+      <sets>
+        <connections name="Single Inside Corners">
+          <entry green="0x1111111" red="0x10000000"/>
+          <entry green="0x11011111" red="0x100000"/>
+          <entry green="0x11111110" red="0x1"/>
+          <entry green="0x11111011" red="0x100"/>
+        </connections>
+        <connections name="Double Inside Corners">
+          <entry green="0x1011111" red="0x10100000"/>
+          <entry green="0x11011110" red="0x100001"/>
+          <entry green="0x11111010" red="0x101"/>
+          <entry green="0x1111011" red="0x10000100"/>
+        </connections>
+        <connections name="Triple Inside Corners">
+          <entry green="0x1011011" red="0x10100100"/>
+          <entry green="0x1011110" red="0x10100001"/>
+          <entry green="0x11011010" red="0x100101"/>
+          <entry green="0x1111010" red="0x10000101"/>
+        </connections>
+        <connections name="Quad Inside Corners">
+          <entry green="0x1011010" red="0x10100101"/>
+          <entry green="0x0" red="0x0"/>
+          <entry green="0x0" red="0x0"/>
+          <entry green="0x0" red="0x0"/>
+        </connections>
+        <connections name="Double Outside Corners">
+          <entry green="0x10" red="0x1011000"/>
+          <entry green="0x1000" red="0x1010010"/>
+          <entry green="0x1000000" red="0x11010"/>
+          <entry green="0x10000" red="0x1001010"/>
+        </connections>
+        <connections name="Double Outside Edges">
+          <entry green="0x1000010" red="0x11000"/>
+          <entry green="0x11000" red="0x1000010"/>
+          <entry green="0x0" red="0x0"/>
+          <entry green="0x0" red="0x0"/>
+        </connections>
+        <connections name="Opposing Double Inside Corners">
+          <entry green="0x1111110" red="0x10000001"/>
+          <entry green="0x11011011" red="0x100100"/>
+          <entry green="0x0" red="0x0"/>
+          <entry green="0x0" red="0x0"/>
+        </connections>
+      </sets>
+      <rows>
+        <row set="0">
+          <tiles>
+            <id>0</id>
+            <id>0</id>
+            <id>0</id>
+            <id>0</id>
+          </tiles>
+        </row>
+        <row set="0">
+          <tiles>
+            <id>0</id>
+            <id>0</id>
+            <id>0</id>
+            <id>0</id>
+          </tiles>
+        </row>
+      </rows>
+    </specialConnections>
+  </tileMatrix>
+  <tileMatrixData name="matrix1" rows="3" cols="3" randomizeMiddle="true" ignoreClear="false" ignoreMapEdges="true" allowSpecialTiles="false" tileset="">
+    <tiles>0,0,0,0,0,0,0,0,0</tiles>
+    <connections set="0">
+      <tiles>0,0,0,0</tiles>
+    </connections>
+    <connections set="0">
+      <tiles>0,0,0,0</tiles>
+    </connections>
+  </tileMatrixData>
+  <tileBrushes>
+    <brush name="brush 1" tileset="tiles.png">
+      <row y="17">
+        <tile x="25" id="1"/>
+        <tile x="26" id="21"/>
+        <tile x="27" id="42"/>
+        <tile x="28" id="42"/>
+        <tile x="29" id="42"/>
+        <tile x="30" id="42"/>
+        <tile x="31" id="43"/>
+        <tile x="32" id="2"/>
+      </row>
+      <row y="18">
+        <tile x="25" id="58"/>
+        <tile x="26" id="59"/>
+        <tile x="27" id="61"/>
+        <tile x="28" id="61"/>
+        <tile x="29" id="61"/>
+        <tile x="30" id="61"/>
+        <tile x="31" id="62"/>
+        <tile x="32" id="58"/>
+      </row>
+      <row y="19">
+        <tile x="26" id="78"/>
+        <tile x="27" id="80"/>
+        <tile x="28" id="79"/>
+        <tile x="29" id="80"/>
+        <tile x="30" id="80"/>
+        <tile x="31" id="81"/>
+      </row>
+      <row y="20">
+        <tile x="26" id="77"/>
+        <tile x="27" id="77"/>
+        <tile x="28" id="77"/>
+        <tile x="29" id="77"/>
+        <tile x="30" id="77"/>
+        <tile x="31" id="77"/>
+      </row>
+    </brush>
+    <brush name="brush 2" tileset="tiles.png">
+      <row y="14">
+        <tile x="10" id="103"/>
+        <tile x="11" id="104"/>
+        <tile x="12" id="105"/>
+        <tile x="13" id="106"/>
+        <tile x="14" id="107"/>
+        <tile x="15" id="108"/>
+      </row>
+    </brush>
+  </tileBrushes>
+  <colorSwatches/>
+  <bookmarks>
+    <bookmark enabled="false"/>
+    <bookmark enabled="false"/>
+    <bookmark enabled="false"/>
+    <bookmark enabled="false"/>
+    <bookmark enabled="false"/>
+    <bookmark enabled="false"/>
+    <bookmark enabled="false"/>
+    <bookmark enabled="false"/>
+    <bookmark enabled="false"/>
+  </bookmarks>
+  <colourGrid>
+    <colour>0x000000</colour>
+    <colour>0x9c9c9c</colour>
+    <colour>0xffffff</colour>
+    <colour>0xbe2532</colour>
+    <colour>0xe06e8a</colour>
+    <colour>0x483b2a</colour>
+    <colour>0xa36323</colour>
+    <colour>0xeb8833</colour>
+    <colour>0xf6e16d</colour>
+    <colour>0x2e474d</colour>
+    <colour>0x42881e</colour>
+    <colour>0xa2cd2e</colour>
+    <colour>0x1a2531</colour>
+    <colour>0x025683</colour>
+    <colour>0x33a2f1</colour>
+    <colour>0xb2dcee</colour>
+  </colourGrid>
+  <exporter name="C:\program files (x86)\DAME\lua\Exporters\csvTilemap.lua" spritepos="Top Left" rotatedSpritePos="false">
+    <setting name="FileExt">csv</setting>
+    <setting name="CSVDir">G:\Aardman\aardman_netmaggame\Nutmeg Part 3 - Final Game\assets</setting>
+  </exporter>
+  <guides>
+    <snap>true</snap>
+    <visible>false</visible>
+    <x>0</x>
+    <y>0</y>
+    <xspace>16</xspace>
+    <yspace>16</yspace>
+    <colour>2013200384</colour>
+    <snaptype>TopLeft</snaptype>
+    <paintcontinuous>false</paintcontinuous>
+    <showgameregion>false</showgameregion>
+    <gameregionwidth>640</gameregionwidth>
+    <gameregionheight>480</gameregionheight>
+    <gameregionopacity>0.5</gameregionopacity>
+    <minGridSpace>16</minGridSpace>
+  </guides>
+</project>
