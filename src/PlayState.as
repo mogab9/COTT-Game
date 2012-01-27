@@ -31,6 +31,8 @@ package
 			for (var i:int = 0 ; i < Registry.players.length ; i++) {
 				add(Registry.players[i]);
 			}
+			trace (Registry.blops);
+			add(Registry.blops);
 			add(Registry.hud);
 			//add(level.stars);
 			//add(level.cats);
@@ -114,7 +116,7 @@ package
 			for (var i:int = 0 ; i < Registry.players.length ; i++) {
 				FlxG.collide(Registry.players[i], Registry.level);
 			}
-			//FlxG.collide(level.cats, level);
+			FlxG.collide(Registry.blops, Registry.level);
 			//FlxG.overlap(player, level.cats, hitCat);
 			//FlxG.overlap(player, level.stars, hitStar);
 		}

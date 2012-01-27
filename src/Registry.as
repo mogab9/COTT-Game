@@ -13,6 +13,8 @@ package
 		public static var player3:Player;
 		public static var player4:Player;
 		
+		public static var blops:Blops;
+		
 		public static var hud:HUD;
 		
 		public function Registry() 

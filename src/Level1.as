@@ -16,7 +16,6 @@ package
 		
 		//public var stars:FlxGroup;
 		//public var cats:Cats;
-		
 		public var blops:Blops;
 		
 		//private var elevator1:Elevator;
@@ -55,7 +54,9 @@ package
 			
 			
 			add(map);
+			
 			addBlops();
+			Registry.blops = blops;
 			//add(elevator1);
 			//add(elevator2);
 			

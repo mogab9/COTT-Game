@@ -13,7 +13,6 @@ package
 		public function addBlop(x:int, y:int):void
 		{
 			var tmpBlop:Blop = new Blop(x, y)
-			
 			add(tmpBlop);
 		}
 		

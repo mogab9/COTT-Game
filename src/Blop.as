@@ -13,7 +13,7 @@ package
 		
 		public function Blop(x:int, y:int ) 
 		{
-			super(x * 16, y * 16);
+			super(x, y);
 			
 			loadGraphic(blopPNG, true, true, 16, 16);
 			
