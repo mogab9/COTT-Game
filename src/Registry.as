@@ -22,8 +22,8 @@ package
 		public static function init():void {
 			level = new Level1;
 			
-			player1 = new Player(70, 44);
-			player2 = new FireRabbit(207, 107);				
+			player1 = new Player(80, 48);
+			player2 = new FireRabbit(208, 112);				
 			players = new Vector.<Player>(Player.nbPlayers, true);
 			players[0]= player1;
 			players[1] = player2;

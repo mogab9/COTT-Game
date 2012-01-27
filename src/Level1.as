@@ -4,14 +4,14 @@ package
 
 	public class Level1 extends Level
 	{
-		//[Embed(source = "../assets/mapCSV_Level1_Sky.csv", mimeType = "application/octet-stream")] public var skyCSV:Class;
+		[Embed(source = "../assets/mapCSV_Level1_Background.csv", mimeType = "application/octet-stream")] public var backgroundCSV:Class;
 		[Embed(source = "../assets/mapCSV_Level1_Map.csv", mimeType = "application/octet-stream")] public var mapCSV:Class;
 		//[Embed(source = "../assets/mapCSV_Level1_Stars.csv", mimeType = "application/octet-stream")] public var starsCSV:Class;
-		//[Embed(source = "../assets/backdrop.png")] public var skyTilesPNG:Class;
+		[Embed(source = "../assets/backdrop.png")] public var backgroundTilesPNG:Class;
 		[Embed(source = "../assets/tiles.png")] public var mapTilesPNG:Class;
 		//[Embed(source = "../assets/star.png")] public var starPNG:Class;
 		
-		//public var sky:FlxTilemap;
+		public var background:FlxTilemap;
 		public var map:FlxTilemap;
 		//public var stars:FlxGroup;
 		//public var cats:Cats;
@@ -27,28 +27,29 @@ package
 		{
 			super();
 			
-			//sky = new FlxTilemap;
-			//sky.loadMap(new skyCSV, skyTilesPNG, 192, 336);
-			//sky.setTileProperties(1, FlxObject.NONE);
-			//sky.scrollFactor.x = 0.9;
+			background = new FlxTilemap;
+			background.loadMap(new backgroundCSV, backgroundTilesPNG, 192, 336);
+			background.setTileProperties(1, FlxObject.NONE);
+			background.scrollFactor.x = 0.9;
 			
 			map = new FlxTilemap;
 			map.loadMap(new mapCSV, mapTilesPNG, 16, 16,FlxTilemap.OFF, 0, 1, 1);
 			
 			//	Makes these tiles as allowed to be jumped UP through (but collide at all other angles)
 			map.setTileProperties(40, FlxObject.UP, null, null, 4);
-						
-			var exit:Exit = new Exit(256, 176-16);
-			add(exit);
-			Registry.levelExit = new FlxPoint(256, 176);
-			
+				
 			width = map.width;
 			height = map.height;
 			
 			//elevator1 = new Elevator(26, 6, 10, 0);
 			//elevator2 = new Elevator(82, 6, 0, 7);
 			
-			//add(sky);
+			add(background);
+			
+			var exit:Exit = new Exit(544+2, 48-14);
+			Registry.levelExit = new FlxPoint(544, 48);
+			add(exit);
+			
 			add(map);
 			//add(elevator1);
 			//add(elevator2);

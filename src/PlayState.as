@@ -18,7 +18,6 @@ package
 		private var m_DialogBoxAvatars:DialogBoxAvatar;
 		static private var s_layerForeground:FlxGroup;
 		
-
 		
 		public function PlayState() 
 		{
@@ -116,7 +115,6 @@ package
 				FlxG.collide(Registry.players[i], Registry.level);
 			}
 			//FlxG.collide(level.cats, level);
-			
 			//FlxG.overlap(player, level.cats, hitCat);
 			//FlxG.overlap(player, level.stars, hitStar);
 		}
