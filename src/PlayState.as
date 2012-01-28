@@ -10,6 +10,7 @@ package
 		// Game Var
 		private var endLevel:Boolean;
 		private var pauseSprite:FlxSprite;
+		private var num_switches_activated:uint;
 		
 		// Dialogs
 		private var m_tDialogBox:DialogBox;
@@ -31,10 +32,10 @@ package
 			for (var i:int = 0 ; i < Registry.players.length ; i++) {
 				add(Registry.players[i]);
 			}
-			trace (Registry.blops);
 			add(Registry.blops);
 			add(Registry.hud);
-			add(Registry.carrots);
+			if(Registry.totalCarrots > 0)	add(Registry.carrots);
+			if(Registry.totalSwitches > 0)	add(Registry.switches);
 			//add(level.cats);
 			
 			//	Tell flixel how big our game world is
@@ -115,13 +116,25 @@ package
 			super.update();
 			
 			// Manage the collisions / hits
+			FlxG.collide(Registry.blops, Registry.level);
+			
+			if (Registry.totalSwitches > 0)	{
+				num_switches_activated = 0;
+				FlxG.collide(Registry.switches, Registry.level);
+			}
+			
 			for (var iii:int = 0 ; iii < Registry.players.length ; iii++) {
 				FlxG.collide(Registry.players[iii], Registry.level);
 				
-				FlxG.overlap(Registry.players[iii], Registry.carrots, hitCarrot);
+				if (Registry.totalCarrots > 0)	FlxG.overlap(Registry.players[iii], Registry.carrots, hitCarrot);
+				if (Registry.totalSwitches > 0)	FlxG.collide(Registry.players[iii], Registry.switches, activateSwitch);
 				//FlxG.overlap(Registry.players[iii], Registry.blops, hitBlops);
 			}
-			FlxG.collide(Registry.blops, Registry.level);
+			
+			if (num_switches_activated == 2) {
+				//Opens the exit at the end of the level		
+				Registry.openExit = true;
+			}
 		}
 		
 		private function changeState():void
@@ -171,24 +184,21 @@ package
 			}
 		}*/
 		
-		private function hitCarrot(p:FlxObject, carrot:FlxObject):void
-		{
-			carrot.kill();
+		private function hitCarrot(m_player:FlxObject, m_carrot:FlxObject):void {
+			m_carrot.kill();
 			
 			FlxG.score += 1;
 			
+			Registry.score.text = FlxG.score.toString() + " / " + Registry.totalCarrots.toString();
+			
 			if (FlxG.score == Registry.totalCarrots)
 			{
-				Registry.score.text = FlxG.score.toString() + " / " + Registry.totalCarrots.toString() + " PERFECT!";
-				//	Opens the exit at the end of the level		
-				//level.openExit();
-			}
-			else
-			{
-				Registry.score.text = FlxG.score.toString() + " / " + Registry.totalCarrots.toString();
+				Registry.score.text += " PERFECT!";
 			}
 		}
+		private function activateSwitch(player:FlxObject, m_switch:FlxObject):void {
+			num_switches_activated ++;
+		}	
 		
 	}
-
 }

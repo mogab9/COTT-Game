@@ -12,11 +12,14 @@ package
 		[Embed(source="../../assets/textures/tiles/maintiles.png")] public var Img_Level1Map:Class;
 		[Embed(source="../../assets/csv/dame/mapCSV_Level1_Carrots.csv", mimeType="application/octet-stream")] public var CSV_Level1Carrots:Class;
 		[Embed(source="../../assets/textures/tiles/carrot.png")] public var Img_Level1Carrots:Class;
+		[Embed(source="../../assets/csv/dame/mapCSV_Level1_Switches.csv", mimeType="application/octet-stream")] public var CSV_Level1Switches:Class;
+		[Embed(source="../../assets/textures/tiles/switch.png")] public var Img_Level1Switches:Class;
 
 		//Tilemaps
 		public var layerLevel1Background:FlxTilemap;
 		public var layerLevel1Map:FlxTilemap;
 		public var layerLevel1Carrots:FlxTilemap;
+		public var layerLevel1Switches:FlxTilemap;
 
 		//Sprites
 		public var ObjectsRabbitsGroup:FlxGroup = new FlxGroup;
@@ -45,11 +48,18 @@ package
 			layerLevel1Carrots.y = 0.000000;
 			layerLevel1Carrots.scrollFactor.x = 1.000000;
 			layerLevel1Carrots.scrollFactor.y = 1.000000;
+			layerLevel1Switches = new FlxTilemap;
+			layerLevel1Switches.loadMap( new CSV_Level1Switches, Img_Level1Switches, 16,16, FlxTilemap.OFF, 0, 1, 1 );
+			layerLevel1Switches.x = 0.000000;
+			layerLevel1Switches.y = 0.000000;
+			layerLevel1Switches.scrollFactor.x = 1.000000;
+			layerLevel1Switches.scrollFactor.y = 1.000000;
 
 			//Add layers to the master group in correct order.
 			masterLayer.add(layerLevel1Background);
 			masterLayer.add(layerLevel1Map);
 			masterLayer.add(layerLevel1Carrots);
+			masterLayer.add(layerLevel1Switches);
 			masterLayer.add(ObjectsRabbitsGroup);
 			masterLayer.add(ObjectsExitGroup);
 			masterLayer.add(ObjectsEnnemiesGroup);

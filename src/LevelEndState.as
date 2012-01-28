@@ -6,7 +6,7 @@ package
 	{
 		[Embed(source = "../assets/csv/end/mapCSV_LevelEnd_Sky.csv", mimeType = "application/octet-stream")] public var skyCSV:Class;
 		[Embed(source = "../assets/textures/tiles/background.png")] public var skyTilesPNG:Class;
-		[Embed(source = "../assets/tuto/rock.png")] public var starPNG:Class;
+		[Embed(source = "../assets/textures/elements/carrot.png")] public var starPNG:Class;
 		
 		private var sky:FlxTilemap;
 		private var won:FlxText;

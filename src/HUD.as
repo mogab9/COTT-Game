@@ -12,6 +12,7 @@ package
 		private var carrotDisplay:FlxSprite;
 		[Embed(source = '../assets/textures/elements/carrot.png')] private var carrotPNG:Class;		
 		public var score:FlxText;
+		public var info:FlxText;
 			
 		// health
 		private var heartRabbit:FlxSprite;
@@ -46,7 +47,7 @@ package
 				add(tabRabbits[i]);
 			}
 			
-			// Score
+			// Score (Carrots)
 			carrotDisplay = new FlxSprite(2 + (Registry.players.length * 16) + 20, 2); 
 			carrotDisplay.scrollFactor.x = carrotDisplay.scrollFactor.y = 0;
 			carrotDisplay.loadGraphic(carrotPNG, false, false, 16, 16, true);
@@ -61,6 +62,14 @@ package
 			add(score);
 			Registry.score = score;
 			
+			// Info
+			info = new FlxText(2, 25, 150);
+			info.color = 0xffffffff;
+			info.shadow = 0xff000000;
+			info.scrollFactor.x = 0;
+			info.scrollFactor.y = 0;
+			info.text = "";
+			add(info);
 			
 			//-----------------health -----------------
 			//health ID 
@@ -128,11 +137,13 @@ package
 					
 				}
 			}
+			if (Registry.openExit && info.text == "") {
+				info.text = "The exit door is open!";
+			}
 		}
 		
 		override public function destroy():void
 		{
-			trace("HUD nuked");
 		}
 		
 	}

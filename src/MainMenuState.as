@@ -56,7 +56,7 @@ package
 			floodfill.start();
 			
 			add(level);
-			//add(level.stars);
+			add(level.carrots);
 			add(title);
 			add(start);
 		}

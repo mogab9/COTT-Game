@@ -6,6 +6,7 @@ package
 	{
 		public static var level:Level;
 		public static var levelExit:FlxPoint;
+		public static var openExit:Boolean = false;
 		
 		public static var map:FlxTilemap;
 		
@@ -20,6 +21,8 @@ package
 		
 		public static var carrots:FlxGroup; // is a shortcut of level.carrots
 		public static var totalCarrots:int; // is a shortcut of level.totalCarrots
+		public static var switches:FlxGroup; // is a shortcut of level.switches
+		public static var totalSwitches:int; // is a shortcut of level.totalSwitches
 		
 		public static var hud:HUD;
 		public static var score:FlxText; // is a shortcut of hud.score
