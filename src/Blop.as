@@ -82,7 +82,7 @@ package
 			if (isTouching(FlxObject.FLOOR) == false && isDying == false)
 			{
 				turnAround();
-			}
+			} 
 			
 			//FlxG.overlap(this, Registry.level, jump);
 			
@@ -109,24 +109,20 @@ package
 		{
 			var tx:int = int(x);
 			var ty:int = int(y);
-			
-			if (Registry.map.getTile(tx - 1, ty) != 0 && Registry.currentPlayer.x < x)
+
+			// player is on the left
+			if (Registry.currentPlayer.x < x && isTouching(FlxObject.FLOOR))
 			{
-				velocity.y = -Registry.currentPlayer.maxVelocity.y/2;
+				//acceleration.x = -maxVelocity.x * 4;
+				velocity.y = -50;
+				acceleration.x = -10;
 			}
-			else if (Registry.map.getTile(tx + 1, ty) != 0 && Registry.currentPlayer.x > x)
+			// player is on the right
+			else if (Registry.currentPlayer.x > x && isTouching(FlxObject.FLOOR))
 			{
-				velocity.y = -Registry.currentPlayer.maxVelocity.y/2;
-			}
-			
-			if (Registry.currentPlayer.x < x)
-			{
-				acceleration.x = -maxVelocity.x*4;
-			}
-			
-			else if (Registry.currentPlayer.x > x)
-			{
-				acceleration.x = maxVelocity.x*4;
+				//acceleration.x = maxVelocity.x * 4;
+				velocity.y = -50;
+				acceleration.x = 10;
 			}
 		}
 		
@@ -135,12 +131,12 @@ package
 			if (facing == FlxObject.RIGHT)
 			{
 				facing = FlxObject.LEFT;
-				velocity.x = -30;
+				velocity.x = -10;
 			}
 			else
 			{
 				facing = FlxObject.RIGHT;
-				velocity.x = 30;
+				velocity.x = 10;
 			}
 		}
 	}
