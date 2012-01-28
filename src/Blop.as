@@ -78,22 +78,22 @@ package
 			}
 			
 			//	Check the tiles below it
-			
+			/*
 			if (isTouching(FlxObject.FLOOR) == false && isDying == false)
 			{
 				turnAround();
 			} 
-			
-			//FlxG.overlap(this, Registry.level, jump);
+			*/
 			
 			// Jump timer
 			
 			counter += FlxG.elapsed;
-			if (counter >= 2)
+			if (counter >= 2)    
 			{
 				// After 2 seconds has passed, the timer will reset.
 				counter = 0;
-				jump();
+				jumpToPlayer();
+				turnAround();
 			}
 			
 			runTime(); // update timer
@@ -105,24 +105,26 @@ package
 			jumpTime -= FlxG.elapsed;
 		}
 		
-		private function jump():void
+		private function jumpToPlayer():void
 		{
 			var tx:int = int(x);
 			var ty:int = int(y);
-
+			
 			// player is on the left
 			if (Registry.currentPlayer.x < x && isTouching(FlxObject.FLOOR))
 			{
 				//acceleration.x = -maxVelocity.x * 4;
-				velocity.y = -50;
-				acceleration.x = -10;
+				facing = FlxObject.RIGHT;
+				velocity.y = -20;
+				velocity.x = -30;
 			}
 			// player is on the right
 			else if (Registry.currentPlayer.x > x && isTouching(FlxObject.FLOOR))
 			{
 				//acceleration.x = maxVelocity.x * 4;
-				velocity.y = -50;
-				acceleration.x = 10;
+				facing = FlxObject.LEFT;
+				velocity.y = -20;
+				velocity.x = 30;
 			}
 		}
 		
@@ -131,12 +133,12 @@ package
 			if (facing == FlxObject.RIGHT)
 			{
 				facing = FlxObject.LEFT;
-				velocity.x = -10;
+				//velocity.x = -10;
 			}
 			else
 			{
 				facing = FlxObject.RIGHT;
-				velocity.x = 10;
+				//velocity.x = 10;
 			}
 		}
 	}
