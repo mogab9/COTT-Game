@@ -6,16 +6,17 @@ package
 	{
 		[Embed(source = "../assets/csv/lvl1/mapCSV_Level1_Background.csv", mimeType = "application/octet-stream")] public var backgroundCSV:Class;
 		[Embed(source = "../assets/csv/lvl1/mapCSV_Level1_Map.csv", mimeType = "application/octet-stream")] public var mapCSV:Class;
-		//[Embed(source = "../assets/mapCSV_Level1_Stars.csv", mimeType = "application/octet-stream")] public var starsCSV:Class;
+		[Embed(source = "../assets/csv/lvl1/mapCSV_Level1_Carrots.csv", mimeType = "application/octet-stream")] public var carrotsCSV:Class;
 		[Embed(source = "../assets/textures/tiles/background.png")] public var backgroundTilesPNG:Class;
 		[Embed(source = "../assets/textures/tiles/maintiles.png")] public var mapTilesPNG:Class;
-		//[Embed(source = "../assets/star.png")] public var starPNG:Class;
+		[Embed(source = "../assets/textures/tiles/carrot.png")] public var carrotPNG:Class;
 		
 		public var background:FlxTilemap;
 		public var map:FlxTilemap;
 		
-		//public var stars:FlxGroup;
-		//public var cats:Cats;
+		public var carrots:FlxGroup;
+		public var totalCarrots:int;
+		
 		public var blops:Blops;
 		
 		//private var elevator1:Elevator;
@@ -23,9 +24,8 @@ package
 		
 		//public var width:int; // now in Level Class
 		//public var height:int; // now in Level Class
-		//public var totalStars:int;
 		
-		public function Level1(/*skipCats:Boolean = false*/) 
+		public function Level1(skipBlops:Boolean = false) 
 		{
 			super();
 			
@@ -56,19 +56,16 @@ package
 			
 			
 			add(map);
-			
-			addBlops();
-			Registry.blops = blops;
+			if (!skipBlops) {			
+				addBlops();
+				Registry.blops = blops;
+			}
 			//add(elevator1);
 			//add(elevator2);
 			
-			//parseStars();
-			
-			/*if (skipCats == false)
-			{
-				addCats();
-			}*/
-			
+			parseCarrots();
+			Registry.carrots = carrots;
+			Registry.totalCarrots = totalCarrots;
 		}
 		
 		private function addBlops():void
@@ -78,18 +75,6 @@ package
 			blops.addBlop(128, 96);
 		}
 		
-		/*private function addCats():void
-		{
-			cats = new Cats;
-			
-			//	The 5 enemy cats in this level. You could place them in the map editor, then parse the results (as we do with the stars) rather than fixed coordinates here
-			cats.addCat(11, 16);
-			cats.addCat(31, 16);
-			cats.addCat(28, 16);
-			cats.addCat(74, 16);
-			cats.addCat(92, 16);
-		}*/
-		
 		/*public function openExit():void
 		{
 			//	Removes the two blocking tiles on the right of the map and sets them to nothing, so the player can walk through
@@ -97,27 +82,26 @@ package
 			map.setTile(99, 16, 0, true);
 		}*/
 		
-		/*private function parseStars():void
+		private function parseCarrots():void
 		{
-			var starMap:FlxTilemap = new FlxTilemap();
+			var carrotsMap:FlxTilemap = new FlxTilemap();
 			
-			starMap.loadMap(new starsCSV, starPNG, 16, 16);
+			carrotsMap.loadMap(new carrotsCSV, carrotPNG, 16, 16);
 			
-			stars = new FlxGroup();
+			carrots = new FlxGroup();
 			
-			for (var ty:int = 0; ty < starMap.heightInTiles; ty++)
+			for (var ty:int = 0; ty < carrotsMap.heightInTiles; ty++)
 			{
-				for (var tx:int = 0; tx < starMap.widthInTiles; tx++)
+				for (var tx:int = 0; tx < carrotsMap.widthInTiles; tx++)
 				{
-					if (starMap.getTile(tx, ty) == 1)
+					if (carrotsMap.getTile(tx, ty) == 1)
 					{
-						stars.add(new Star(tx, ty));
-						totalStars++;
+						carrots.add(new Carrot(tx, ty));
+						totalCarrots++;
 					}
 				}
 			}
-		}*/
-		
+		}		
 	}
 
 }

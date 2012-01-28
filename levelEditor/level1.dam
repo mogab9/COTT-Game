@@ -2,7 +2,7 @@
 <project>
   <version>2.1.4</version>
   <bgColor>0x000000</bgColor>
-  <viewPos x="16.395359668794242" y="22.264833527658993"/>
+  <viewPos x="44.6001603086267" y="21.777108433734938"/>
   <firstLayersTop>false</firstLayersTop>
   <spriteEntries currentId="8">
     <group name="Blops" idx="1" open="false" selected="true">
@@ -18,7 +18,7 @@
   </spriteEntries>
   <layers>
     <group name="Level1" xScroll="1" yScroll="1" visible="true" open="true" locked="false" exports="true">
-      <maplayer name="Background" xScroll="1" yScroll="1" x="0" y="0" width="3" height="1" tileset="../assets/backdrop.png" tileWidth="192" tileHeight="336" visible="true" hasHits="false" drawIdx="1" collideIdx="1" eraseIdx="0" locked="false" exports="true" tileSpacingX="192" tileSpacingY="336" xStagger="0" tileOffsetX="0" tileOffsetY="0" isMaster="false" mapType="2d" hasHeight="false" repeatX="false" repeatY="false">
+      <maplayer name="Background" xScroll="1" yScroll="1" x="0" y="0" width="3" height="1" tileset="../assets/textures/tiles/background.png" tileWidth="192" tileHeight="336" visible="true" hasHits="false" drawIdx="1" collideIdx="1" eraseIdx="0" locked="false" exports="true" tileSpacingX="192" tileSpacingY="336" xStagger="0" tileOffsetX="0" tileOffsetY="0" isMaster="false" mapType="2d" hasHeight="false" repeatX="false" repeatY="false">
         <row>1,1,1</row>
         <tileProperties>
           <properties/>
@@ -27,32 +27,55 @@
       </maplayer>
       <maplayer name="Map" xScroll="1" yScroll="1" x="0" y="0" width="36" height="21" tileset="../assets/textures/tiles/maintiles.png" tileWidth="16" tileHeight="16" visible="true" hasHits="false" drawIdx="1" collideIdx="1" eraseIdx="0" locked="false" exports="true" tileSpacingX="16" tileSpacingY="16" xStagger="0" tileOffsetX="0" tileOffsetY="0" isMaster="false" mapType="2d" hasHeight="false" repeatX="false" repeatY="false" selected="true">
         <row>3,3,3,3,3,3,3,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2</row>
-        <row>3,0,0,0,0,0,0,0,0,7,1,1,0,6,0,0,0,0,0,8,0,0,0,0,0,0,6,0,0,0,0,2,0,0,0,2</row>
+        <row>3,0,0,0,0,0,0,0,0,0,1,1,0,6,0,0,0,0,0,0,0,0,0,0,0,0,6,0,0,0,0,2,0,0,0,2</row>
         <row>3,3,0,0,0,0,0,0,0,3,3,3,0,20,0,0,0,0,0,2,2,0,2,2,0,0,20,0,0,0,0,2,0,0,0,2</row>
-        <row>3,3,0,0,0,0,0,0,0,3,3,3,0,0,0,0,0,0,0,2,2,2,2,2,0,0,0,0,0,0,0,2,0,0,0,2</row>
-        <row>3,0,0,3,3,3,3,0,0,3,3,3,0,0,0,0,0,0,0,0,2,2,2,0,0,0,0,0,0,0,0,2,0,0,2,2</row>
+        <row>3,3,0,0,0,0,0,0,0,3,3,3,0,0,0,0,0,0,0,2,1,2,1,2,0,0,0,0,0,0,0,2,0,0,0,2</row>
+        <row>3,0,0,3,3,3,3,0,0,3,3,3,0,0,0,0,0,0,0,0,2,1,2,0,0,0,0,0,0,0,0,2,0,0,2,2</row>
         <row>3,0,0,3,3,3,3,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2,0,0,0,0,0,0,0,0,0,0,0,2,2,2</row>
         <row>3,0,0,0,3,3,3,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2,2,2,2</row>
         <row>3,3,0,0,0,0,0,0,3,3,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2,2,1,1,1</row>
         <row>3,3,3,0,0,0,0,3,3,3,0,0,3,2,3,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2,2,1,1,1,1</row>
         <row>3,2,0,0,3,3,0,3,3,3,0,0,3,2,3,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2,2,2,1,1,1,1</row>
         <row>3,0,0,3,3,3,0,0,0,0,0,0,0,2,3,0,0,0,0,0,0,0,0,0,0,0,0,0,2,2,1,1,1,1,1,1</row>
-        <row>3,0,3,3,3,3,3,2,2,3,8,0,0,0,0,0,0,0,3,3,2,0,0,0,0,0,2,2,2,1,1,1,1,1,1,1</row>
-        <row>3,7,3,3,2,2,3,3,3,3,3,0,0,0,0,8,3,2,3,7,0,0,0,0,0,0,2,2,1,1,1,1,1,1,1,1</row>
-        <row>3,3,3,3,3,2,3,2,3,3,3,3,0,0,0,3,3,3,3,3,0,0,0,0,0,0,2,2,1,1,1,1,1,1,1,1</row>
-        <row>3,3,3,3,3,3,3,3,3,3,3,3,4,0,0,3,3,3,3,3,0,0,0,0,0,0,2,1,1,1,1,1,1,1,1,1</row>
-        <row>3,3,0,0,0,0,2,0,0,0,0,0,3,3,0,0,0,0,3,3,0,0,0,0,0,2,2,2,1,1,1,1,1,1,1,1</row>
-        <row>3,3,0,0,2,0,2,0,2,0,3,3,3,3,0,0,0,0,3,3,0,0,0,0,0,6,2,2,2,1,1,1,1,1,1,1</row>
-        <row>3,1,7,0,2,0,0,0,2,0,2,0,0,0,0,0,3,0,0,0,0,0,0,0,0,20,0,2,2,2,1,1,1,1,1,1</row>
-        <row>3,1,1,1,3,1,1,3,3,0,0,0,0,0,0,3,0,3,0,0,0,0,0,0,0,0,0,0,2,2,1,1,1,1,1,1</row>
-        <row>3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,0,3,3,3,0,0,0,0,0,0,4,0,0,2,2,2,1,1,1,1</row>
-        <row>2,2,2,2,2,2,2,2,2,2,2,2,2,2,0,0,0,0,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,1,1,1</row>
+        <row>3,0,3,3,3,3,3,2,2,3,0,0,0,0,0,0,0,0,3,3,2,0,0,0,0,0,2,2,2,1,1,0,0,0,1,1</row>
+        <row>3,0,3,3,2,2,3,3,3,3,3,0,0,0,0,0,3,2,3,2,0,0,0,0,0,0,2,2,1,1,1,0,1,0,1,1</row>
+        <row>3,3,3,3,3,2,3,2,3,3,3,3,0,0,0,3,3,3,3,0,0,0,0,0,0,0,2,2,1,1,1,0,1,0,0,1</row>
+        <row>3,3,3,3,3,3,3,3,3,3,3,3,4,0,0,3,3,3,0,0,0,0,0,0,0,0,2,1,1,1,1,0,0,1,0,1</row>
+        <row>3,3,0,0,0,0,2,0,0,0,0,0,3,3,0,0,0,0,3,3,2,0,0,0,0,2,2,2,1,1,1,1,1,0,0,1</row>
+        <row>3,3,0,0,2,0,2,0,2,0,3,3,3,3,0,0,0,0,3,0,0,0,0,0,0,6,2,2,2,1,1,0,0,0,1,1</row>
+        <row>3,1,0,0,2,0,0,0,2,0,2,0,0,0,0,0,3,0,0,0,0,0,0,0,0,20,0,2,2,2,1,0,0,1,1,1</row>
+        <row>3,1,1,1,3,1,1,3,3,0,0,0,0,0,0,3,0,3,0,0,0,0,0,0,0,0,0,0,2,2,1,0,1,1,1,1</row>
+        <row>1,1,1,1,1,1,1,3,3,3,3,3,3,3,3,3,0,3,3,0,0,0,0,0,0,0,4,0,0,0,0,0,1,1,1,1</row>
+        <row>1,1,1,1,1,1,1,1,2,2,2,2,2,2,0,0,0,0,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,1,1,1</row>
         <tileProperties>
           <properties/>
         </tileProperties>
       </maplayer>
+      <maplayer name="Carrots" xScroll="1" yScroll="1" x="0" y="0" width="36" height="21" tileset="../assets/textures/tiles/carrot.png" tileWidth="16" tileHeight="16" visible="true" hasHits="false" drawIdx="1" collideIdx="1" eraseIdx="0" locked="false" exports="true" tileSpacingX="16" tileSpacingY="16" xStagger="0" tileOffsetX="0" tileOffsetY="0" isMaster="false" mapType="2d" hasHeight="false" repeatX="false" repeatY="false">
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0</row>
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+      </maplayer>
     </group>
-    <group name="Objects" xScroll="1" yScroll="1" visible="true" open="true" locked="false" exports="true">
+    <group name="Objects" xScroll="1" yScroll="1" visible="false" open="true" locked="false" exports="true">
       <spritelayer name="Rabbits" xScroll="1" yScroll="1" visible="true" locked="false" exports="true" aligned="false" sort="false">
         <sprite guid="7A651060-4A0C-1A7B-8CD2-88B59911713C" x="80" y="48" Z="0" angle="0" scaleX="1" scaleY="1" flipped="false" idx="4"/>
         <sprite guid="C53A8CD8-9250-9F7E-35FD-DA0FE5A197E2" x="208" y="112" Z="0" angle="0" scaleX="1" scaleY="1" flipped="false" idx="5" frame="0"/>
@@ -120,7 +143,7 @@
     <colour>0x33a2f1</colour>
     <colour>0xb2dcee</colour>
   </colourGrid>
-  <exporter name="E:\Program Files (x86)\DAME\lua\Exporters\flixelSimple.lua" spritepos="Top Left" rotatedSpritePos="false">
+  <exporter name="C:\Program Files (x86)\DAME\lua\Exporters\flixelSimple.lua" spritepos="Top Left" rotatedSpritePos="false">
     <setting name="ExportOnlyCSV">false</setting>
     <setting name="Imports"/>
     <setting name="TileMapClass">FlxTilemap</setting>
@@ -130,8 +153,8 @@
     <setting name="LevelName">level1</setting>
     <setting name="BaseClass">BaseLevelDAME</setting>
     <setting name="FlixelVersion">2.5</setting>
-    <setting name="CSVDir">E:\FlixelWorkspace\CallOfTheTea\Call-of-the-tea---Platform-Puzzle-Game-Project\map</setting>
-    <setting name="AS3Dir">E:\FlixelWorkspace\CallOfTheTea\Call-of-the-tea---Platform-Puzzle-Game-Project\src</setting>
+    <setting name="CSVDir">C:\Users\Ben\workspace\Call-of-the-tea---Platform-Puzzle-Game-Project\assets\csv\dame</setting>
+    <setting name="AS3Dir">C:\Users\Ben\workspace\Call-of-the-tea---Platform-Puzzle-Game-Project\src\dame</setting>
   </exporter>
   <guides>
     <snap>true</snap>

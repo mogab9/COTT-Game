@@ -16,16 +16,20 @@ package
 		public static var player4:Player;
 		public static var currentPlayer:Player;
 		
-		public static var blops:Blops;
+		public static var blops:Blops; // is a shortcut of level.blops
+		
+		public static var carrots:FlxGroup; // is a shortcut of level.carrots
+		public static var totalCarrots:int; // is a shortcut of level.totalCarrots
 		
 		public static var hud:HUD;
+		public static var score:FlxText; // is a shortcut of hud.score
 		
 		public function Registry() 
 		{
 		}
 		
 		public static function init():void {
-			level = new Level1;
+			level = new Level1; // fill level, blops & carrots
 			
 			player1 = new Player(80, 48);
 			player2 = new FireRabbit(208, 112);				

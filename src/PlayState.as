@@ -34,7 +34,7 @@ package
 			trace (Registry.blops);
 			add(Registry.blops);
 			add(Registry.hud);
-			//add(level.stars);
+			add(Registry.carrots);
 			//add(level.cats);
 			
 			//	Tell flixel how big our game world is
@@ -104,8 +104,8 @@ package
 				}
 			}
 			if (endLevel) {
-				for (var i:int = 0 ; i < Registry.players.length && !endLevel ; i++) {
-					Registry.players[i].exists = false;
+				for (var ii:int = 0 ; ii < Registry.players.length && !endLevel ; ii++) {
+					Registry.players[ii].exists = false;
 				}
 				FlxG.fade(0xff000000, 2, changeState);
 				FlxG.music.fadeOut(2);
@@ -113,12 +113,15 @@ package
 			}
 			
 			super.update();
-			for (var i:int = 0 ; i < Registry.players.length ; i++) {
-				FlxG.collide(Registry.players[i], Registry.level);
+			
+			// Manage the collisions / hits
+			for (var iii:int = 0 ; iii < Registry.players.length ; iii++) {
+				FlxG.collide(Registry.players[iii], Registry.level);
+				
+				FlxG.overlap(Registry.players[iii], Registry.carrots, hitCarrot);
+				//FlxG.overlap(Registry.players[iii], Registry.blops, hitBlops);
 			}
 			FlxG.collide(Registry.blops, Registry.level);
-			//FlxG.overlap(player, level.cats, hitCat);
-			//FlxG.overlap(player, level.stars, hitStar);
 		}
 		
 		private function changeState():void
@@ -168,23 +171,23 @@ package
 			}
 		}*/
 		
-		/*private function hitStar(p:FlxObject, star:FlxObject):void
+		private function hitCarrot(p:FlxObject, carrot:FlxObject):void
 		{
-			star.kill();
+			carrot.kill();
 			
 			FlxG.score += 1;
 			
-			if (FlxG.score == level.totalStars)
+			if (FlxG.score == Registry.totalCarrots)
 			{
-				//	Opens the exit at the end of the level
-				score.text = FlxG.score.toString() + " / " + level.totalStars.toString() + " EXIT OPEN!";
-				level.openExit();
+				Registry.score.text = FlxG.score.toString() + " / " + Registry.totalCarrots.toString() + " PERFECT!";
+				//	Opens the exit at the end of the level		
+				//level.openExit();
 			}
 			else
 			{
-				score.text = FlxG.score.toString() + " / " + level.totalStars.toString();
+				Registry.score.text = FlxG.score.toString() + " / " + Registry.totalCarrots.toString();
 			}
-		}*/
+		}
 		
 	}
 

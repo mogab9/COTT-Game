@@ -4,12 +4,14 @@ package
 	import org.flixel.plugin.photonstorm.*;
 
 	public class HUD extends FlxGroup
-	{
-		private var currentRabbit_img:FlxSprite;
-		
+	{	
 		private var tabRabbits:Vector.<FlxSprite>;
 		private var tabRabbitsActive:Vector.<FlxSprite>;
 		private var tabRabbitsInactive:Vector.<FlxSprite>;
+		
+		private var carrotDisplay:FlxSprite;
+		[Embed(source = '../assets/textures/elements/carrot.png')] private var carrotPNG:Class;		
+		public var score:FlxText;
 			
 		// health
 		private var heartRabbit:FlxSprite;
@@ -17,24 +19,14 @@ package
 		
 		public function HUD()
 		{			
-			//----------rabbit-----------
-			//current rabbit ID
-			/*currentRabbit_id = new FlxText(5, 5, 100);
-			currentRabbit_id.color = 0xffffffff;
-			currentRabbit_id.shadow = 0xff000000;
-			currentRabbit_id.scrollFactor.x = 0;
-			currentRabbit_id.scrollFactor.y = 0;
-			currentRabbit_id.text = "1";
-			add(currentRabbit_id);*/
-			
 			//table of rabbits images for the HUD
 			tabRabbits = new Vector.<FlxSprite>(Registry.players.length, true);
 			tabRabbitsActive = new Vector.<FlxSprite>(Registry.players.length, true);
 			tabRabbitsInactive = new Vector.<FlxSprite>(Registry.players.length, true);
 			
 			for (var i:uint = 0; i < Registry.players.length; i++) {
-				tabRabbitsActive[i] = new FlxSprite(20 + (i * 16), 2);
-				tabRabbitsInactive[i] = new FlxSprite(20 + (i * 16), 2);
+				tabRabbitsActive[i] = new FlxSprite(5 + (i * 16), 2);
+				tabRabbitsInactive[i] = new FlxSprite(5 + (i * 16), 2);
 				
 				tabRabbitsActive[i].scrollFactor.x = 0;
 				tabRabbitsInactive[i].scrollFactor.x = 0;
@@ -42,8 +34,8 @@ package
 				tabRabbitsActive[i].scrollFactor.y = 0;
 				tabRabbitsInactive[i].scrollFactor.y = 0;
 								
-				tabRabbitsActive[i].loadGraphic(Registry.players[i].playerPNG, true, true, 16, 18, true);
-				tabRabbitsInactive[i].loadGraphic(Registry.players[i].playerPNG_HUD, true, true, 16, 18, true);
+				tabRabbitsActive[i].loadGraphic(Registry.players[i].playerPNG, false, false, 16, 18, true);
+				tabRabbitsInactive[i].loadGraphic(Registry.players[i].playerPNG_HUD, false, false, 16, 18, true);
 				
 				if (i == Player.currentId-1) {
 					tabRabbits[i] = tabRabbitsActive[i];
@@ -53,6 +45,21 @@ package
 				}
 				add(tabRabbits[i]);
 			}
+			
+			// Score
+			carrotDisplay = new FlxSprite(2 + (Registry.players.length * 16) + 20, 2); 
+			carrotDisplay.scrollFactor.x = carrotDisplay.scrollFactor.y = 0;
+			carrotDisplay.loadGraphic(carrotPNG, false, false, 16, 16, true);
+			add(carrotDisplay);
+			
+			score = new FlxText(2 + ((Registry.players.length+1) * 16) + 20, 10, 100);
+			score.color = 0xffffffff;
+			score.shadow = 0xff000000;
+			score.scrollFactor.x = 0;
+			score.scrollFactor.y = 0;
+			score.text = "0 / " + Registry.totalCarrots.toString();
+			add(score);
+			Registry.score = score;
 			
 			
 			//-----------------health -----------------
@@ -89,19 +96,19 @@ package
 					add(tabRabbits[0]);
 				}
 				if (FlxG.keys.TWO && Player.nbPlayers >= 2) {
-					for (var i:uint = 0; i < Registry.players.length; i++) {
-						remove(tabRabbits[i]);
-						tabRabbits[i] = tabRabbitsInactive[i];
-						add(tabRabbits[i]);
+					for (var ii:uint = 0; ii < Registry.players.length; ii++) {
+						remove(tabRabbits[ii]);
+						tabRabbits[ii] = tabRabbitsInactive[ii];
+						add(tabRabbits[ii]);
 					}
 					remove(tabRabbits[1]);
 					tabRabbits[1] = tabRabbitsActive[1];
 					add(tabRabbits[1]);
 				}
 				if (FlxG.keys.THREE && Player.nbPlayers >= 3) {
-					for (var i:uint = 0; i < Registry.players.length; i++) {
-						remove(tabRabbits[i]);
-						tabRabbits[i] = tabRabbitsInactive[i];
+					for (var iii:uint = 0; iii < Registry.players.length; iii++) {
+						remove(tabRabbits[iii]);
+						tabRabbits[iii] = tabRabbitsInactive[iii];
 						add(tabRabbits[i]);
 					}
 					remove(tabRabbits[2]);
@@ -110,10 +117,10 @@ package
 					
 				}
 				if (FlxG.keys.FOUR && Player.nbPlayers >= 4) {
-					for (var i:uint = 0; i < Registry.players.length; i++) {
-						remove(tabRabbits[i]);
-						tabRabbits[i] = tabRabbitsInactive[i];
-						add(tabRabbits[i]);
+					for (var iiii:uint = 0; iiii < Registry.players.length; iiii++) {
+						remove(tabRabbits[iiii]);
+						tabRabbits[iiii] = tabRabbitsInactive[iiii];
+						add(tabRabbits[iiii]);
 					}
 					remove(tabRabbits[3]);
 					tabRabbits[3] = tabRabbitsActive[3];

@@ -4,7 +4,7 @@ package
 
 	public class Star extends FlxSprite
 	{
-		[Embed(source = '../assets/star.png')] private var starPNG:Class;
+		[Embed(source = '../assets/tuto/star.png')] private var starPNG:Class;
 		
 		public function Star(X:int, Y:int)
 		{
