@@ -1,20 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <project>
-  <version>2.1.4</version>
+  <version>2.1.3</version>
   <bgColor>0x000000</bgColor>
-  <viewPos x="10.81310462198546" y="80.09290178571419"/>
+  <viewPos x="162" y="234"/>
   <firstLayersTop>false</firstLayersTop>
-  <spriteEntries currentId="6">
-    <group name="Rabbits" idx="1" open="false">
+  <spriteEntries currentId="8">
+    <group name="Blops" idx="6" open="true" selected="true">
+      <sprite name="Blop" idx="7" className="Blop" image="../assets/textures/actors/blop.png" width="16" height="18" preview="0" anchorX="0" anchorY="1" boundsX="0" boundsY="1" boundsWidth="16" boundsHeight="17" constructor="" creation="" exports="true" canScale="true" canRotate="true" surfaceObject="false" tileIndex="-1"/>
+    </group>
+    <group name="Rabbits" idx="1" open="true">
       <sprite name="Rabbit" idx="2" className="Player" image="../assets/textures/actors/player.png" width="16" height="18" preview="0" anchorX="0" anchorY="0" boundsX="0" boundsY="0" boundsWidth="16" boundsHeight="18" constructor="" creation="" exports="true" canScale="true" canRotate="true" surfaceObject="false" tileIndex="-1"/>
       <sprite name="FireRabbit" idx="3" className="FireRabbit" image="../assets/textures/actors/firerabbit.png" width="16" height="18" preview="0" anchorX="0" anchorY="0" boundsX="0" boundsY="0" boundsWidth="16" boundsHeight="18" constructor="" creation="" exports="true" canScale="true" canRotate="true" surfaceObject="false" tileIndex="0"/>
     </group>
-    <group name="Exit" idx="4" open="false">
+    <group name="Exit" idx="4" open="true">
       <sprite name="ExitDoor" idx="5" className="Exit" image="../assets/textures/elements/exitdoor.png" width="16" height="32" preview="0" anchorX="0" anchorY="0" boundsX="0" boundsY="0" boundsWidth="16" boundsHeight="32" constructor="" creation="" exports="true" canScale="true" canRotate="true" surfaceObject="false" tileIndex="0"/>
     </group>
   </spriteEntries>
   <layers>
-    <group name="Level" xScroll="1" yScroll="1" visible="true" open="true" locked="false" exports="true">
+    <group name="Level1" xScroll="1" yScroll="1" visible="true" open="true" locked="false" exports="true">
       <maplayer name="Background" xScroll="1" yScroll="1" x="0" y="0" width="3" height="1" tileset="../assets/backdrop.png" tileWidth="192" tileHeight="336" visible="true" hasHits="false" drawIdx="1" collideIdx="1" eraseIdx="0" locked="false" exports="true" tileSpacingX="192" tileSpacingY="336" xStagger="0" tileOffsetX="0" tileOffsetY="0" isMaster="false" mapType="2d" hasHeight="false" repeatX="false" repeatY="false">
         <row>1,1,1</row>
         <tileProperties>
@@ -22,28 +25,28 @@
           <properties/>
         </tileProperties>
       </maplayer>
-      <maplayer name="Map" xScroll="1" yScroll="1" x="0" y="0" width="36" height="21" tileset="../assets/textures/tiles/maintiles.png" tileWidth="16" tileHeight="16" visible="true" hasHits="false" drawIdx="1" collideIdx="1" eraseIdx="0" locked="false" exports="true" tileSpacingX="16" tileSpacingY="16" xStagger="0" tileOffsetX="0" tileOffsetY="0" isMaster="false" mapType="2d" hasHeight="false" repeatX="false" repeatY="false" selected="true">
+      <maplayer name="Map" xScroll="1" yScroll="1" x="0" y="0" width="36" height="21" tileset="../assets/textures/tiles/maintiles.png" tileWidth="16" tileHeight="16" visible="true" hasHits="false" drawIdx="1" collideIdx="1" eraseIdx="0" locked="false" exports="true" tileSpacingX="16" tileSpacingY="16" xStagger="0" tileOffsetX="0" tileOffsetY="0" isMaster="false" mapType="2d" hasHeight="false" repeatX="false" repeatY="false">
         <row>3,3,3,3,3,3,3,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2</row>
         <row>3,0,0,0,0,0,0,0,0,7,1,1,0,6,0,0,0,0,0,8,0,0,0,0,0,0,6,0,0,0,0,0,0,0,0,2</row>
         <row>3,3,0,0,0,0,0,0,0,3,3,3,0,20,0,0,0,0,0,0,0,0,0,0,0,0,20,0,0,0,0,0,0,0,0,2</row>
         <row>3,3,0,0,0,0,0,0,0,3,3,3,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2</row>
         <row>3,0,0,3,3,3,3,0,0,3,3,3,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2,2</row>
-        <row>3,0,0,3,3,3,3,0,0,0,0,0,0,0,0,0,0,0,8,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2,2,2</row>
-        <row>3,0,0,0,3,3,3,0,0,0,0,0,0,0,0,0,0,0,8,0,0,0,0,0,0,0,0,0,0,0,0,0,2,2,2,2</row>
-        <row>3,3,8,0,0,0,0,0,3,3,0,0,0,0,0,0,0,0,8,8,0,0,0,0,0,0,0,0,0,0,0,2,2,1,1,1</row>
-        <row>3,3,3,0,0,0,0,3,3,3,0,0,3,2,3,0,0,0,8,8,0,0,0,0,0,0,0,0,0,0,2,2,1,1,1,1</row>
-        <row>3,0,0,0,3,3,0,3,3,3,0,0,3,2,3,0,0,0,0,8,0,0,0,0,0,0,0,0,0,2,2,2,1,1,1,1</row>
-        <row>3,8,0,3,3,3,0,0,0,0,0,0,3,2,3,0,0,0,0,8,0,0,0,0,0,0,0,0,2,2,1,1,1,1,1,1</row>
+        <row>3,0,0,3,3,3,3,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2,2,2</row>
+        <row>3,0,0,0,3,3,3,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2,2,2,2</row>
+        <row>3,3,8,0,0,0,0,0,3,3,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2,2,1,1,1</row>
+        <row>3,3,3,0,0,0,0,3,3,3,0,0,3,2,3,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2,2,1,1,1,1</row>
+        <row>3,0,0,0,3,3,0,3,3,3,0,0,3,2,3,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2,2,2,1,1,1,1</row>
+        <row>3,8,0,3,3,3,0,0,0,0,0,0,0,2,3,0,0,0,0,0,0,0,0,0,0,0,0,0,2,2,1,1,1,1,1,1</row>
         <row>3,8,3,3,3,3,3,2,2,3,8,0,0,0,0,0,0,0,3,3,2,0,0,0,0,0,2,2,2,1,1,1,1,1,1,1</row>
         <row>3,7,3,3,2,2,3,3,3,3,3,0,0,0,0,8,3,2,3,7,0,0,0,0,0,0,2,2,1,1,1,1,1,1,1,1</row>
         <row>3,3,3,3,3,2,3,2,3,3,3,3,0,0,0,3,3,3,3,3,0,0,0,0,0,0,2,2,1,1,1,1,1,1,1,1</row>
         <row>3,3,3,3,3,3,3,3,3,3,3,3,4,0,0,3,3,3,3,3,0,0,0,0,0,0,2,1,1,1,1,1,1,1,1,1</row>
         <row>3,3,0,0,0,0,0,0,0,0,0,0,3,3,0,0,0,0,3,3,0,0,0,0,0,2,2,2,1,1,1,1,1,1,1,1</row>
         <row>3,3,0,0,0,0,0,0,0,0,3,3,3,3,0,0,0,0,3,3,0,0,0,0,0,6,2,2,2,1,1,1,1,1,1,1</row>
-        <row>3,1,7,0,0,0,0,0,0,0,0,0,0,0,0,3,3,0,0,0,0,0,0,0,0,20,0,2,2,2,1,1,1,1,1,1</row>
-        <row>3,1,1,1,3,1,1,3,3,0,0,0,0,0,0,3,3,3,0,0,0,0,0,0,0,0,0,0,2,2,1,1,1,1,1,1</row>
-        <row>3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,0,0,0,0,0,0,4,0,0,2,2,2,1,1,1,1</row>
-        <row>2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,1,1,1</row>
+        <row>3,1,7,0,0,0,0,0,0,0,0,0,0,0,0,0,3,0,0,0,0,0,0,0,0,20,0,2,2,2,1,1,1,1,1,1</row>
+        <row>3,1,1,1,3,1,1,3,3,0,0,0,0,0,0,3,0,3,0,0,0,0,0,0,0,0,0,0,2,2,1,1,1,1,1,1</row>
+        <row>3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,0,3,3,3,0,0,0,0,0,0,4,0,0,2,2,2,1,1,1,1</row>
+        <row>2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,0,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,1,1,1</row>
         <tileProperties>
           <properties/>
         </tileProperties>
@@ -56,6 +59,9 @@
       </spritelayer>
       <spritelayer name="Exit" xScroll="1" yScroll="1" visible="true" locked="false" exports="true" aligned="false" sort="false">
         <sprite guid="17CE04BD-4C4C-B9E6-1B95-FD83F24F37CE" x="544" y="32" Z="0" angle="0" scaleX="1" scaleY="1" flipped="false" idx="5"/>
+      </spritelayer>
+      <spritelayer name="Ennemies" xScroll="1" yScroll="1" visible="true" locked="false" exports="true" aligned="false" sort="false" selected="true">
+        <sprite guid="A1B14AB0-E779-D8B6-16CD-4C4CEC55895D" x="128" y="96" Z="0" angle="0" scaleX="1" scaleY="1" flipped="false" idx="7"/>
       </spritelayer>
     </group>
   </layers>
@@ -114,23 +120,22 @@
     <colour>0x33a2f1</colour>
     <colour>0xb2dcee</colour>
   </colourGrid>
-  <exporter name="C:\program files (x86)\DAME\lua\Exporters\csvTilemap.lua" spritepos="Top Left" rotatedSpritePos="false">
+  <exporter name="E:\Program Files (x86)\DAME\lua\Exporters\flixelSimple.lua" spritepos="Top Left" rotatedSpritePos="false">
     <setting name="ExportOnlyCSV">false</setting>
     <setting name="Imports"/>
     <setting name="TileMapClass">FlxTilemap</setting>
     <setting name="FlixelPackage">org.flixel</setting>
     <setting name="GamePackage"/>
-    <setting name="MainLayer">Group1Map1</setting>
-    <setting name="LevelName">levelOne</setting>
-    <setting name="BaseClass">BaseLevel</setting>
+    <setting name="MainLayer">MainLayer</setting>
+    <setting name="LevelName">level1</setting>
+    <setting name="BaseClass">BaseLevelDAME</setting>
     <setting name="FlixelVersion">2.5</setting>
-    <setting name="CSVDir">G:\Aardman\aardman_netmaggame\Nutmeg Part 3 - Final Game\assets</setting>
-    <setting name="AS3Dir">G:\Aardman\aardman_netmaggame\Nutmeg Part 2 - The Map\src</setting>
-    <setting name="FileExt">csv</setting>
+    <setting name="CSVDir">E:\FlixelWorkspace\CallOfTheTea\Call-of-the-tea---Platform-Puzzle-Game-Project\map</setting>
+    <setting name="AS3Dir">E:\FlixelWorkspace\CallOfTheTea\Call-of-the-tea---Platform-Puzzle-Game-Project\src</setting>
   </exporter>
   <guides>
     <snap>true</snap>
-    <visible>true</visible>
+    <visible>false</visible>
     <x>0</x>
     <y>0</y>
     <xspace>16</xspace>

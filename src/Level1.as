@@ -4,11 +4,11 @@ package
 
 	public class Level1 extends Level
 	{
-		[Embed(source = "../assets/mapCSV_Level1_Background.csv", mimeType = "application/octet-stream")] public var backgroundCSV:Class;
-		[Embed(source = "../assets/mapCSV_Level1_Map.csv", mimeType = "application/octet-stream")] public var mapCSV:Class;
+		[Embed(source = "../assets/csv/lvl1/mapCSV_Level1_Background.csv", mimeType = "application/octet-stream")] public var backgroundCSV:Class;
+		[Embed(source = "../assets/csv/lvl1/mapCSV_Level1_Map.csv", mimeType = "application/octet-stream")] public var mapCSV:Class;
 		//[Embed(source = "../assets/mapCSV_Level1_Stars.csv", mimeType = "application/octet-stream")] public var starsCSV:Class;
-		[Embed(source = "../assets/backdrop.png")] public var backgroundTilesPNG:Class;
-		[Embed(source = "../assets/tiles.png")] public var mapTilesPNG:Class;
+		[Embed(source = "../assets/textures/tiles/background.png")] public var backgroundTilesPNG:Class;
+		[Embed(source = "../assets/textures/tiles/maintiles.png")] public var mapTilesPNG:Class;
 		//[Embed(source = "../assets/star.png")] public var starPNG:Class;
 		
 		public var background:FlxTilemap;
@@ -21,8 +21,8 @@ package
 		//private var elevator1:Elevator;
 		//private var elevator2:Elevator;
 		
-		//public var width:int; // in Level Class
-		//public var height:int; // in Level Class
+		//public var width:int; // now in Level Class
+		//public var height:int; // now in Level Class
 		//public var totalStars:int;
 		
 		public function Level1(/*skipCats:Boolean = false*/) 

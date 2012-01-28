@@ -4,9 +4,9 @@ package
 	
 	public class LevelEndState extends FlxState
 	{
-		//[Embed(source = "../assets/mapCSV_LevelEnd_Sky.csv", mimeType = "application/octet-stream")] public var skyCSV:Class;
-		//[Embed(source = "../assets/backdrop.png")] public var skyTilesPNG:Class;
-		[Embed(source = "../assets/star.png")] public var starPNG:Class;
+		[Embed(source = "../assets/csv/end/mapCSV_LevelEnd_Sky.csv", mimeType = "application/octet-stream")] public var skyCSV:Class;
+		[Embed(source = "../assets/textures/tiles/background.png")] public var skyTilesPNG:Class;
+		[Embed(source = "../assets/tuto/rock.png")] public var starPNG:Class;
 		
 		private var sky:FlxTilemap;
 		private var won:FlxText;
@@ -42,7 +42,7 @@ package
 			
 			stars.start(false, 4, 0.1);
 			
-			//add(sky);
+			add(sky);
 			add(stars);
 			add(won);
 		}
