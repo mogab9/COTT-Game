@@ -7,11 +7,14 @@ package
 		public static var level:Level;
 		public static var levelExit:FlxPoint;
 		
+		public static var map:FlxTilemap;
+		
 		public static var players:Vector.<Player>;
 		public static var player1:Player;
 		public static var player2:Player;
 		public static var player3:Player;
 		public static var player4:Player;
+		public static var currentPlayer:Player;
 		
 		public static var blops:Blops;
 		
@@ -29,6 +32,7 @@ package
 			players = new Vector.<Player>(Player.nbPlayers, true);
 			players[0]= player1;
 			players[1] = player2;
+			currentPlayer = player1;
 			
 			hud = new HUD();
 		}

@@ -133,6 +133,7 @@ package
 						FlxControl.player1.setCursorControl(false, false, true, true);
 						FlxControl.player1.setJumpButton("SPACE", FlxControlHandler.KEYMODE_PRESSED, 200, FlxObject.FLOOR, 250, 200);
 						FlxG.camera.follow(this, FlxCamera.STYLE_PLATFORMER);
+						Registry.currentPlayer = Registry.player1;
 					}
 				}
 				else if (isActive) {
@@ -149,6 +150,7 @@ package
 						FlxControl.player2.setCursorControl(false, false, true, true);
 						FlxControl.player2.setJumpButton("SPACE", FlxControlHandler.KEYMODE_PRESSED, 200, FlxObject.FLOOR, 250, 200);
 						FlxG.camera.follow(this, FlxCamera.STYLE_PLATFORMER);
+						Registry.currentPlayer = Registry.player2;
 					}
 				}
 				else if (isActive) {

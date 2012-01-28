@@ -35,7 +35,9 @@ package
 			background.scrollFactor.x = 0.9;
 			
 			map = new FlxTilemap;
-			map.loadMap(new mapCSV, mapTilesPNG, 16, 16,FlxTilemap.OFF, 0, 1, 1);
+			map.loadMap(new mapCSV, mapTilesPNG, 16, 16, FlxTilemap.OFF, 0, 1, 1);
+			
+			Registry.map = map;
 			
 			//	Makes these tiles as allowed to be jumped UP through (but collide at all other angles)
 			map.setTileProperties(40, FlxObject.UP, null, null, 4);

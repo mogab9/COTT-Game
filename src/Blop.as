@@ -10,6 +10,8 @@ package
 		[Embed(source = '../assets/textures/actors/blop.png')] private var blopPNG:Class;
 		
 		public var isDying:Boolean = false;
+		public var jumpTime:Number = 400;
+		public var counter:Number = 0;
 		
 		public function Blop(x:int, y:int ) 
 		{
@@ -55,7 +57,7 @@ package
 			
 			var tx:int = int(x / 16);
 			var ty:int = int(y / 16);
-			/*
+			
 			if (facing == FlxObject.LEFT)
 			{
 				//	31 is the Collide Index of our Tilemap (which sadly isn't exposed in Flixel 2.5, so is hard-coded here. Not ideal I appreciate)
@@ -74,12 +76,57 @@ package
 					return;
 				}
 			}
-			*/
+			
 			//	Check the tiles below it
 			
 			if (isTouching(FlxObject.FLOOR) == false && isDying == false)
 			{
 				turnAround();
+			}
+			
+			//FlxG.overlap(this, Registry.level, jump);
+			
+			// Jump timer
+			
+			counter += FlxG.elapsed;
+			if (counter >= 2)
+			{
+				// After 2 seconds has passed, the timer will reset.
+				counter = 0;
+				jump();
+			}
+			
+			runTime(); // update timer
+		}
+		
+		public function runTime():void
+		{
+			//Reduce Number
+			jumpTime -= FlxG.elapsed;
+		}
+		
+		private function jump():void
+		{
+			var tx:int = int(x);
+			var ty:int = int(y);
+			
+			if (Registry.map.getTile(tx - 1, ty) != 0 && Registry.currentPlayer.x < x)
+			{
+				velocity.y = -Registry.currentPlayer.maxVelocity.y/2;
+			}
+			else if (Registry.map.getTile(tx + 1, ty) != 0 && Registry.currentPlayer.x > x)
+			{
+				velocity.y = -Registry.currentPlayer.maxVelocity.y/2;
+			}
+			
+			if (Registry.currentPlayer.x < x)
+			{
+				acceleration.x = -maxVelocity.x*4;
+			}
+			
+			else if (Registry.currentPlayer.x > x)
+			{
+				acceleration.x = maxVelocity.x*4;
 			}
 		}
 		
@@ -88,13 +135,11 @@ package
 			if (facing == FlxObject.RIGHT)
 			{
 				facing = FlxObject.LEFT;
-				
 				velocity.x = -30;
 			}
 			else
 			{
 				facing = FlxObject.RIGHT;
-				
 				velocity.x = 30;
 			}
 		}
