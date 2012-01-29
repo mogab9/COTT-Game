@@ -66,6 +66,10 @@ package
 			
 			// Activating
 			m_tDialogBox.setIsActive(true);
+			
+
+			
+			
 		}
 		
 		override public function update():void
@@ -128,7 +132,9 @@ package
 				
 				if (Registry.totalCarrots > 0)	FlxG.overlap(Registry.players[iii], Registry.carrots, hitCarrot);
 				if (Registry.totalSwitches > 0)	FlxG.collide(Registry.players[iii], Registry.switches, activateSwitch);
-				//FlxG.overlap(Registry.players[iii], Registry.blops, hitBlops);
+				
+				//manage of the hit and kill enemies
+				FlxG.collide(Registry.players[iii], Registry.blops, hitBlops);
 			}
 			
 			if (num_switches_activated == 2) {
@@ -196,6 +202,29 @@ package
 				Registry.score.text += " PERFECT!";
 			}
 		}
+		
+		
+		private function hitBlops(m_player:FlxObject, m_blops:FlxObject):void {
+			//new collide
+			if(!m_player.flickering){
+				//Kill
+				if(m_player.y < m_blops.y) {
+					m_blops.kill();
+					//FlxG.log("gg");
+				}
+				//hurt
+				else {
+					if(m_player.health == 1) m_player.kill();
+					else{
+						m_player.flicker(2); //Flickering 
+						m_player.health -= 1;
+						FlxG.log(m_player.health);
+					}
+				}	
+			}
+			
+		}
+		
 		private function activateSwitch(player:FlxObject, m_switch:FlxObject):void {
 			num_switches_activated ++;
 		}	
