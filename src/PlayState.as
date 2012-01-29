@@ -214,12 +214,19 @@ package
 				}
 				//hurt
 				else {
-					if(m_player.health == 1) m_player.kill();
+					/*if(m_player.health == 1) {
+						m_player.
+						m_player.kill();
+					}
 					else{
 						m_player.flicker(2); //Flickering 
 						m_player.health -= 1;
 						FlxG.log(m_player.health);
-					}
+					}*/
+					
+					m_player.flicker(2);
+					m_player.hurt(1);
+					FlxG.log(m_player.health);
 				}	
 			}
 			
