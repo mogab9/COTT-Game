@@ -8,9 +8,9 @@ package
 	public class PlayState extends FlxState
 	{	
 		// Game Var
-		private var endLevel:Boolean;
+		private var endLevel:Boolean=false;
 		private var pauseSprite:FlxSprite;
-		private var num_switches_activated:uint;
+		private var num_switches_activated:uint=0;
 		
 		// Dialogs
 		private var m_tDialogBox:DialogBox;
@@ -66,10 +66,6 @@ package
 			
 			// Activating
 			m_tDialogBox.setIsActive(true);
-			
-
-			
-			
 		}
 		
 		override public function update():void
@@ -138,7 +134,7 @@ package
 			}
 			
 			if (num_switches_activated == 2) {
-				//Opens the exit at the end of the level		
+				//Opens the exit at the end of the level
 				Registry.openExit = true;
 			}
 		}
@@ -184,7 +180,6 @@ package
 				//Kill
 				if(m_player.y < m_blops.y) {
 					m_blops.kill();
-					//FlxG.log("gg");
 				}
 				//hurt
 				else {
@@ -192,29 +187,10 @@ package
 					else{
 						m_player.flicker(2); //Flickering 
 						m_player.health -= 1;
-						FlxG.log(m_player.health);
 					}
 				}	
-			}
-			
+			}			
 		}
-		
-		/*private function hitCat(player:FlxObject, cat:FlxObject):void
-		{
-			if (Cat(cat).isDying)
-			{
-				return;
-			}
-			
-			if (player.y < cat.y)
-			{
-				cat.kill();
-			}
-			else
-			{
-				Player(player).restart();
-			}
-		}*/
 		
 		private function hitCarrot(m_player:FlxObject, m_carrot:FlxObject):void {
 			m_carrot.kill();

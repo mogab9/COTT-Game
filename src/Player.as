@@ -31,7 +31,7 @@ package
 			
 			//	As this extends FlxSprite we need to call super() to ensure all of the parent variables we need are created
 			super(x, y);
-			super.health = 2;
+			super.health = 3;
 			
 			start = new FlxPoint(x, y);
 			

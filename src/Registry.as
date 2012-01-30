@@ -32,6 +32,7 @@ package
 		}
 		
 		public static function init():void {
+			openExit = false;
 			level = new Level1; // fill level, blops & carrots
 			
 			player1 = new Player(80, 48);

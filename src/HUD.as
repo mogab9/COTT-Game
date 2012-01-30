@@ -142,10 +142,5 @@ package
 			}
 		}
 		
-		override public function destroy():void
-		{
-		}
-		
 	}
-
 }
