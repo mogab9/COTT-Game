@@ -148,6 +148,11 @@ package
 			FlxG.switchState(new LevelEndState);
 		}
 		
+		private function gameIsOver():void
+		{
+			FlxG.switchState(new GameOverState);
+		}
+		
 		private function processDialogsInput():void {
 			if (FlxG.keys.justPressed("SPACE") || FlxG.keys.justPressed("ENTER")) {
 				if (m_tDialogLength - 1 > 0) {
@@ -171,6 +176,27 @@ package
 		override public function destroy():void
 		{
 			super.destroy();
+		}
+		
+		private function hitBlops(m_player:FlxObject, m_blops:FlxObject):void {
+			//new collide
+			if(!m_player.flickering){
+				//Kill
+				if(m_player.y < m_blops.y) {
+					m_blops.kill();
+					//FlxG.log("gg");
+				}
+				//hurt
+				else {
+					if(m_player.health == 1) gameIsOver();
+					else{
+						m_player.flicker(2); //Flickering 
+						m_player.health -= 1;
+						FlxG.log(m_player.health);
+					}
+				}	
+			}
+			
 		}
 		
 		/*private function hitCat(player:FlxObject, cat:FlxObject):void
@@ -201,28 +227,6 @@ package
 			{
 				Registry.score.text += " PERFECT!";
 			}
-		}
-		
-		
-		private function hitBlops(m_player:FlxObject, m_blops:FlxObject):void {
-			//new collide
-			if(!m_player.flickering){
-				//Kill
-				if(m_player.y < m_blops.y) {
-					m_blops.kill();
-					//FlxG.log("gg");
-				}
-				//hurt
-				else {
-					if(m_player.health == 1) m_player.kill();
-					else{
-						m_player.flicker(2); //Flickering 
-						m_player.health -= 1;
-						FlxG.log(m_player.health);
-					}
-				}	
-			}
-			
 		}
 		
 		private function activateSwitch(player:FlxObject, m_switch:FlxObject):void {

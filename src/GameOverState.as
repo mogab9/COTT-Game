@@ -2,17 +2,17 @@ package
 {
 	import org.flixel.*;
 	
-	public class LevelEndState extends FlxState
+	public class GameOverState extends FlxState
 	{
 		[Embed(source = "../assets/csv/end/mapCSV_LevelEnd_Sky.csv", mimeType = "application/octet-stream")] public var skyCSV:Class;
 		[Embed(source = "../assets/textures/tiles/background.png")] public var skyTilesPNG:Class;
-		[Embed(source = "../assets/textures/elements/carrot.png")] public var starPNG:Class;
+		[Embed(source = "../assets/textures/elements/blop.png")] public var starPNG:Class;
 		
 		private var sky:FlxTilemap;
 		private var won:FlxText;
 		private var stars:FlxEmitter;
 
-		public function LevelEndState() 
+		public function GameOverState() 
 		{
 		}
 		
@@ -21,7 +21,7 @@ package
 			//sky = new FlxTilemap;
 			//sky.loadMap(new skyCSV, skyTilesPNG, 192, 336);
 			
-			won = new FlxText(0, 80, 320, "- GAME WON! -");
+			won = new FlxText(0, 80, 320, "- GAME OVER! -");
 			won.scale.x = 4;
 			won.scale.y = 4;
 			won.alignment = "center";

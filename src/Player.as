@@ -31,7 +31,7 @@ package
 			
 			//	As this extends FlxSprite we need to call super() to ensure all of the parent variables we need are created
 			super(x, y);
-			super.health = 5;
+			super.health = 2;
 			
 			start = new FlxPoint(x, y);
 			
@@ -242,6 +242,12 @@ package
 		public function restart():void
 		{
 			reset(start.x, start.y);
+		}
+		
+		override public function destroy():void
+		{
+			super.destroy();
+			nbPlayers --;
 		}
 	}
 }
